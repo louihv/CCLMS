@@ -1,0 +1,164 @@
+/* Container Styles */
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #282c34;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+/* Featured Section with Fade-In Animation */
+.featured {
+  background-image: url('./LogReg_BG.jpg');
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  opacity: 0; /* Start with invisible */
+  transform: translateY(20px); /* Start slightly down */
+  animation: fadeIn 1.5s forwards; /* Fade-in animation */
+}
+
+/* Fade-In Keyframes */
+@keyframes fadeIn {
+  0% {
+    opacity: 0; /* Start fully transparent */
+    transform: translateY(20px); /* Move down */
+  }
+  100% {
+    opacity: 1; /* End fully opaque */
+    transform: translateY(0); /* Move to original position */
+  }
+}
+
+/* WebKit Animation Support */
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; /* Start fully transparent */
+    transform: translateY(20px); /* Move down */
+  }
+  100% {
+    opacity: 1; /* End fully opaque */
+    transform: translateY(0); /* Move to original position */
+  }
+}
+
+/* Featured Container Styles */
+.featuredContainer {
+  text-align: center;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title Styles */
+.featuredTitle {
+  max-width: 45%;
+  margin-top: 10vh;
+  font-size: 40px;
+  margin-bottom: -1px;
+}
+
+/* Description Styles */
+.featuredDesc {
+  line-height: 150%;
+  max-width: 50%;
+  font-size: 12pt;
+  margin-bottom: 20px;
+}
+
+/* Button Styles */
+.buttonStyle {
+  margin-bottom: 20px;
+  position: relative;
+  font-size: 12pt;
+  padding: 15px 40px;
+  background-color: transparent; /* Initial background */
+  border: 2px solid #ffffff; /* Button border color */
+  border-radius: 50px;
+  color: #ffffff; /* Initial text color */
+  cursor: pointer;
+  overflow: hidden; /* Prevent overflow */
+  transition: color 0.4s, background-color 0.4s; /* Smooth transitions */
+}
+
+.buttonStyle:hover {
+  color: #000000; /* Change text color on hover */
+  background-color: rgba(255, 255, 255); /* Fade-in background color */
+}
+
+/* Main Styles */
+.main {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Featured Section Styles */
+.featuredSection {
+  margin-bottom: 40px;
+  margin-top: 400px;
+  flex: 1 1 300px;
+}
+
+/* Grid Styles */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Card Styles */
+.card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Card Image Styles */
+.cardImage {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Card Title Styles */
+.cardTitle {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+/* Card Description Styles */
+.cardDesc {
+  font-size: 1em;
+  color: #ccc;
+  margin-bottom: 20px;
+}

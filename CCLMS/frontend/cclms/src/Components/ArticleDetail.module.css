@@ -1,0 +1,115 @@
+/* Article Container Styles */
+.articleContainer {
+  position: absolute; /* Changed to relative for better layout control */
+  left: 0;
+  right: 0;
+  min-height: 100vh; /* Full viewport height */
+  padding: 20px; /* Consistent padding */
+  background-color: #282c34; /* Dark background color */
+  color: #fff; /* White text for contrast */
+  font-family: 'Arial', sans-serif; /* Font for the article */
+  display: flex; /* Flexbox for alignment */
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center align items */
+}
+
+/* Image Container Styles */
+.imageContainer {
+  position: relative; /* Keep as relative for normal flow */
+  padding: 150px 30px 30px;
+  width: 100%; /* Full width */
+  height: 50vh; /* Half of the viewport height */
+  display: flex; /* Flexbox for positioning */
+  overflow: hidden; /* Hide overflow */
+}
+
+/* Article Image Styles */
+.articleImage {
+  position: absolute; /* Keep as relative for normal flow */
+  display: flex;
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width of the image container */
+  height: 80%; /* Full height of the image container */
+  object-fit: cover; /* Cover to maintain aspect ratio */
+  border-radius: 10px; /* Rounded corners for the image */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+
+/* Article Title Styles */
+.articleTitle {
+  position: absolute; /* Position the title over the image */
+  bottom: 250px; /* Space from the bottom */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Offset the left position */
+  font-size: 4rem; /* Title font size */
+  margin: 0; /* Remove default margin */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Text shadow for readability */
+  color: #fff; /* White title color */
+  text-align: center; /* Center align the title text */
+  width: 80%; /* Make it slightly narrower for a better look */
+}
+
+/* Article Description Styles */
+.articleDescription {
+  position: relative; /* Change to relative to allow flow below the image */
+  font-size: 1.25rem; /* Font size for description */
+  bottom: 100px; /* Space from the bottom */
+  color: #f8f9fa; /* Light gray text color */
+  line-height: 1.6; /* Increased line height for readability */
+  text-align: justify; /* Justify text */
+  margin: 20px auto; /* Margin for spacing, center it */
+  padding: 20px; /* Padding inside the description */
+  width: 80%;
+  border-radius: 8px; /* Rounded corners */
+  background-color: rgba(40, 44, 52, 0.8); /* Slightly transparent background for readability */
+}
+
+/* Article Content Styles */
+.articleContent {
+  position: relative; /* Change to relative to allow flow below the image */
+  margin-top: -50px;
+  width: 80%;
+  bottom: 100px; /* Space from the bottom */
+  padding: 20px; /* Padding for inner spacing */
+  line-height: 1.6; /* Increased line height for better readability */
+  color: #ffffff; /* White text for readability */
+  font-size: 1.1rem; /* Slightly smaller font size for body text */
+}
+
+/* Paragraph Styles within Article Content */
+.articleContent p {
+  margin-top: 15px; /* Space between paragraphs */
+  margin-bottom: 15px; /* Space between paragraphs */
+  color: #f8f9fa; /* Light gray for paragraph text */
+  text-align: justify; /* Justify text for a neat look */
+}
+
+/* Article Content Header Styles */
+.articleContent h2, 
+.articleContent h3, 
+.articleContent h4 {
+  color: #ffffff; /* White text for headers */
+  margin-top: 20px; /* Space above headers */
+  margin-bottom: 10px; /* Space below headers */
+}
+
+/* Additional Styling for Links within Article Content */
+.articleContent a {
+  color: #00aaff; /* Color for links */
+  text-decoration: underline; /* Underline links */
+}
+
+.articleContent a:hover {
+  color: #0077cc; /* Darker color on hover for links */
+  text-decoration: none; /* Remove underline on hover */
+}
+
+
+/* Loading Indicator Styles */
+.loadingIndicator {
+  font-size: 1.5rem; /* Font size for loading text */
+  color: #fff; /* White color for loading text */
+  text-align: center; /* Center the loading text */
+  margin-top: 20px; /* Margin above the loading text */
+}

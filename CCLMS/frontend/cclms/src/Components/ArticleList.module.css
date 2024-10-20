@@ -1,0 +1,143 @@
+/* Article List Container Styles */
+.articleListContainer {
+  position: absolute; /* Changed to relative for better control of inner elements */
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100vh; /* Ensure container covers full viewport height */
+  padding: 80px 20px; /* Reduced padding for smaller devices */
+  background-color: #333; /* Dark background */
+  background-size: cover; /* Cover the entire background */
+  background-position: center; /* Center the background image */
+  color: #fff; /* White text for better contrast */
+  font-family: Arial, sans-serif; /* Consistent, clean font */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Hero Section */
+.heroSection {
+  width: 100%;
+  background-color: #282c34; /* Dark fallback color */
+  background-size: cover; /* Ensure the background covers the entire hero section */
+  background-position: center;
+  padding: 80px 20px; /* Padding adjusted for better responsiveness */
+  text-align: center;
+  color: #fff;
+}
+
+/* Hero Title */
+.heroTitle {
+  font-size: 3.5rem; /* Slightly smaller for better layout on mobile */
+  font-weight: bold;
+  margin: 0;
+  line-height: 2;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Added shadow for better contrast */
+}
+
+/* Hero Subtitle */
+.heroSubtitle {
+  text-align: center;
+  font-size: 1.25rem; /* Slightly smaller for mobile optimization */
+  margin-top: 20px;
+  color: #f8f9fa; /* Light text */
+}
+
+/* Category Section */
+.categorySection {
+  margin-top: 50px; /* Reduced space for better balance */
+  width: 100%;
+  max-width: 1200px; /* Optimized for readability on large screens */
+  padding: 0 15px; /* Slightly reduced padding for better layout on small screens */
+  margin-left: auto;
+  margin-right: auto; /* Center the section */
+}
+
+/* Category Title */
+.categoryTitle {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  text-align: left;
+  color: #f0f0f0; /* Slightly lighter color for contrast against dark background */
+  font-weight: 600; /* Make the title more prominent */
+  border-bottom: 2px solid #444; /* Add a subtle border for visual separation */
+  padding-bottom: 10px;
+}
+
+/* Article List Styles */
+.articleList {
+  list-style: none; /* Removed default list styling */
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap; /* Enable wrapping for responsiveness */
+  gap: 25px; /* Added more space between articles */
+  justify-content: center; /* Center articles */
+  margin-top: 20px;
+}
+
+/* Article Item Styles */
+.articleItem {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px; /* More rounded corners for a modern look */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow for a cleaner look */
+  width: 100%;
+  max-width: 340px; /* Fine-tuned width for better layout on all devices */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for hover effect */
+}
+
+.articleItem:hover {
+  transform: translateY(-5px); /* Lift the article slightly on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Darker shadow on hover for emphasis */
+}
+
+/* Article Image */
+.articleImage {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease; /* Smooth zoom effect on hover */
+}
+
+.articleItem:hover .articleImage {
+  transform: scale(1.05); /* Slight zoom on hover for dynamic effect */
+}
+
+/* Article Title */
+h3 {
+  font-size: 1.6rem;
+  margin: 10px 0;
+  color: #333; /* Darker color for contrast */
+  font-weight: bold;
+}
+
+/* Article Description */
+p {
+  font-size: 1rem;
+  color: #555; /* Lighter gray for readability */
+  text-align: justify; /* Justified text for a clean layout */
+  margin-bottom: 15px;
+  line-height: 1.5; /* Improved line spacing for readability */
+}
+
+/* Link Styles */
+a {
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth color change */
+}
+
+a:hover {
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline; /* Underline link on hover */
+}

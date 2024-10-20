@@ -1,0 +1,172 @@
+/* src/Components/Register.module.css */
+
+input[type="password"]::-ms-reveal {
+    filter: invert(100%); /* Inverts the color for visibility */
+    opacity: 1; /* Ensure it is fully visible */
+    visibility: visible; /* Keep it visible */
+  }
+  
+  input[type="password"]::-webkit-password-field {
+    appearance: none; /* Remove default styles */
+    -webkit-appearance: none; /* Remove default styles for WebKit browsers */
+  }
+  
+  input[type="password"] {
+    position: relative; /* Position for parent container */
+  }
+  
+  input[type="password"]::-webkit-inner-spin-button {
+    display: none; /* Hide inner spin button */
+  }
+  
+  input[type="password"]::-webkit-search-decoration {
+    display: none; /* Hide search decoration */
+  }
+
+
+
+.registerContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./LogReg_BG.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.logo {
+    margin-top: -50px;
+    height: 120px;
+    width: auto;
+}
+
+.formContainer {
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    max-width: 600px; /* Wider container for landscape layout */
+    width: 90%;
+}
+
+.title {
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+}
+
+.error {
+    color: #e74c3c;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.form {
+    display: flex;
+    padding: 0;
+    flex-wrap: wrap; /* Allow inputs to wrap in landscape layout */
+    gap: 15px; /* Increased space between input groups */
+    justify-content: center; /* Center the input groups */
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 calc(50% - 20px); /* Each input group takes half the width minus gap */
+    min-width: 250px; /* Ensure minimum width for responsiveness */
+    margin-bottom: 20px; /* Add margin below each input group for additional spacing */
+    margin-left: 10px; /* Add margin below each input group for additional spacing */
+}
+
+.inputLabel {
+    text-align: left;
+    margin-bottom: 5px;
+    color: #ffffff;
+    font-size: 0.9em;
+}
+
+.input {
+    background-color: rgba(46, 39, 67, 0.25); /* Transparent input background */
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    color: #ffffff;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+::-ms-reveal {
+    filter: invert(100%);
+  }
+  input::-ms-clear {
+    display: none;
+  }
+
+.input:focus {
+    border-color: #4A90E2;
+    outline: none;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+.button {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(90deg, #3c00bc, #3601bf);
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Full-width button */
+}
+
+.button:hover {
+    background: linear-gradient(90deg, #260077, #23007a);
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.link {
+    margin-top: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #8c7ec8; /* Soft hover color change */
+}
+
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .formContainer {
+        padding: 30px 20px; /* Adjust padding for smaller screens */
+    }
+
+    .title {
+        font-size: 2em; /* Slightly smaller title for mobile */
+    }
+
+    .button {
+        font-size: 16px; /* Adjust button size for mobile */
+    }
+
+    .input {
+        font-size: 15px; /* Adjust input size for mobile */
+    }
+
+    .inputGroup {
+        flex: 1 1 100%; /* Stack input groups vertically on small screens */
+    }
+}

@@ -1,0 +1,138 @@
+/* Container Styling */
+.newsContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 100vh; /* Covers the entire viewport */
+    display: flex;
+    flex-direction: column; /* Layout as column */
+    justify-content: space-between; /* Evenly space content */
+    align-items: center; /* Center content horizontally */
+    background-color: #282c34;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+    color: #fff;
+  }
+  
+  /* Section Titles */
+  .sectionTitle {
+    margin: 100px 0 20px; /* Top, Bottom spacing */
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: bold;
+    color: #ffd700; /* Hogwarts gold */
+    letter-spacing: 0.05rem;
+  }
+
+  .newsSection{
+    margin-top: 50px;
+    width: 100%; /* Full width */
+    max-width: 1200px; /* Limit width for readability */
+    text-align: center; /* Center text */
+  }
+  
+  /* Section Styling */
+  .featuresSection{
+    margin-top: 20px;
+    width: 100%; /* Full width */
+    max-width: 1200px; /* Limit width for readability */
+    text-align: center; /* Center text */
+  }
+
+  .eventsSection {
+    margin-top: 30px;
+    margin-bottom: 100px;
+    width: 100%; /* Full width */
+    max-width: 1200px; /* Limit width for readability */
+    text-align: center; /* Center text */
+  }
+  
+  /* Grid Layout */
+  .gridWrapper {
+    display: flex;
+    justify-content: center; /* Center grid horizontally */
+    width: 100%;
+  }
+  
+  .grid {
+    display: grid;
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px; /* Limit grid width */
+    margin: 0 0 20px; /* Bottom margin */
+  }
+  
+  /* Article Card Styles */
+  .card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  .cardImage {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover .cardImage {
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+  
+  .cardTitle {
+    font-size: 1.75rem;
+    margin-bottom: 15px;
+    color: #ffd700; /* Match section title color */
+    transition: color 0.3s;
+  }
+  
+  .cardDesc {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.5;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+  
+    .sectionTitle {
+      font-size: 2rem;
+    }
+  
+    .cardTitle {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .sectionTitle {
+      font-size: 1.75rem;
+    }
+  
+    .cardTitle {
+      font-size: 1.25rem;
+    }
+  }
+  
