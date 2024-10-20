@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 /* src/Components/Register.module.css */
 
 input[type="password"]::-ms-reveal {
@@ -23,7 +26,14 @@ input[type="password"]::-ms-reveal {
     display: none; /* Hide search decoration */
   }
 
-
+/* body{
+    background-image: url('./LogReg_BG.jpg');
+    background-size: cover;
+    background-blend-mode: darken;
+    background-position:center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+} */
 
 .registerContainer {
     position: absolute;
@@ -35,16 +45,19 @@ input[type="password"]::-ms-reveal {
     justify-content: center;
     align-items: center;
     background-image: url('./LogReg_BG.jpg');
-    background-size: cover;
-    background-position: center;
+    background-attachment: fixed;
     margin: 0;
     font-family: 'Arial', sans-serif;
+    height: 130vh;
 }
 
 .logo {
     margin-top: -50px;
     height: 120px;
     width: auto;
+    position: absolute;
+    top: 80px;
+    left: 650px;
 }
 
 .formContainer {
@@ -58,9 +71,13 @@ input[type="password"]::-ms-reveal {
 .title {
     margin-bottom: 25px;
     color: #ffffff;
-    font-size: 2.5em;
+    font-size: 70px;
+    line-height: 2%;
     font-weight: bold;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+    position: absolute;
+    top: 150px;
+    left: 580px;
 }
 
 .error {
@@ -75,6 +92,8 @@ input[type="password"]::-ms-reveal {
     flex-wrap: wrap; /* Allow inputs to wrap in landscape layout */
     gap: 15px; /* Increased space between input groups */
     justify-content: center; /* Center the input groups */
+    position: relative;
+    top: 100px;
 }
 
 .inputGroup {
@@ -84,6 +103,8 @@ input[type="password"]::-ms-reveal {
     min-width: 250px; /* Ensure minimum width for responsiveness */
     margin-bottom: 20px; /* Add margin below each input group for additional spacing */
     margin-left: 10px; /* Add margin below each input group for additional spacing */
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    
 }
 
 .inputLabel {
@@ -91,6 +112,7 @@ input[type="password"]::-ms-reveal {
     margin-bottom: 5px;
     color: #ffffff;
     font-size: 0.9em;
+    cursor: text;
 }
 
 .input {
@@ -101,6 +123,7 @@ input[type="password"]::-ms-reveal {
     font-size: 16px;
     color: #ffffff;
     transition: border 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
 ::-ms-reveal {
     filter: invert(100%);
@@ -127,6 +150,7 @@ input[type="password"]::-ms-reveal {
     font-size: 18px;
     transition: background 0.3s ease, transform 0.2s ease;
     width: 100%; /* Full-width button */
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
 
 .button:hover {
@@ -143,7 +167,7 @@ input[type="password"]::-ms-reveal {
 }
 
 .link:hover {
-    color: #8c7ec8; /* Soft hover color change */
+    color: #d6d4e0; /* Soft hover color change */
 }
 
 
