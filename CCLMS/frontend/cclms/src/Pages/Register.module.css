@@ -170,6 +170,14 @@ input[type="password"]::-ms-reveal {
     color: #d6d4e0; /* Soft hover color change */
 }
 
+hr{
+    position: relative;
+    top: 120px;
+}
+a{
+    position: relative;
+    top: 120px;
+}
 
 
 /* Mobile responsiveness */
