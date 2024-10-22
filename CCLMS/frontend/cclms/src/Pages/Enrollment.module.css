@@ -1,6 +1,25 @@
 .enrollment {
     padding: 20px;
     text-align: center;
+    width: 100%;
+    font-family: 'Garamond', serif; /* Elegant font for a classic feel */
+    height: 200vh;
+  }
+  .header{
+    background-image: url(./Images/enrollement_bg.jpg);
+    height: 70vh;
+    width: 100%;
+    background-repeat: no-repeat; /* Prevents the background from repeating */
+    background-size:cover;  /*Makes sure the background covers the entire area */
+    background-attachment: fixed;
+    position: absolute;
+    left: 0; 
+    top: 0;
+  }
+
+  .sec{
+    position: absolute;
+    top: 320px;
   }
   
   label {

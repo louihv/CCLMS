@@ -46,6 +46,8 @@ function Enrollment({ userId }) {
 
   return (
     <div className={styles.enrollment}>
+    <section className={styles.header}></section>
+    <div className={styles.sec}>
       <h2>Enrollment</h2>
       <form onSubmit={handleSubmit}>
         {subjects.map((subject, index) => (
@@ -64,6 +66,7 @@ function Enrollment({ userId }) {
           Enroll Now
         </button>
       </form>
+      </div>
     </div>
   );
 }
