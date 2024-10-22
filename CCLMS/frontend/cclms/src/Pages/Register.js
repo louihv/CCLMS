@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import styles from './Register.module.css'; // Import the CSS module
-import logo from './Logo-CC.png'; // Ensure the path to your image is correct
+import logo from './Images/CC-Logo.png'; // Ensure the path to your image is correct
 
 const Register = () => {
   const [firstName, setFirstName] = useState('');

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'; 
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import logo from './Logo-CC.png'; // Ensure the path to your image is correct
+import logo from './Images/CC-Logo.png'; // Ensure the path to your image is correct
 import styles from './Login.module.css'; // Import the CSS module
 
 const Login = () => {

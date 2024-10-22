@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from './Logo-CC.png';
-import './Navbar.css'; // Use a separate CSS file for styles
+import './CSS/Navbar.css'; // Use a separate CSS file for styles
 import Modal from './Modal'; // Import the Modal component
 
 const Navbar = () => {
@@ -37,7 +37,7 @@ const Navbar = () => {
         <img className="logo" src={logo} alt="Logo" />
         <ul className="navList">
           <li className="navItem"><Link to="/home" className="navLink">Home</Link></li>
-          <li className="navItem"><Link to="/hogwartsherald" className="navLink">Hogwarts Herald</Link></li>
+          <li className="navItem"><Link to="/hogwartsherald" className="navLink">The Daily Prophet</Link></li>
           <li className="navItem"><Link to="/dashboard" className="navLink">Wizarding Workspace</Link></li>
           <li className="navItem" onClick={handleLogout}><span className="navLink">Logout</span></li>
         </ul>

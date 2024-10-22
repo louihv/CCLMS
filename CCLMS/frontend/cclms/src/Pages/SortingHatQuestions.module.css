@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+@font-face {
+    font-family: 'magic';
+    src: url(./Fonts/magic.ttf) format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+.quizContainer {
+    width: 100%;
+    background-image: url(./Images/bg.jpg);
+    height: 130vh;
+    background-repeat: no-repeat; /* Prevents the background from repeating */
+    background-size:cover;  /*Makes sure the background covers the entire area */
+    background-attachment: fixed; 
+    font-family: 'Garamond', serif; /* Elegant font for a classic feel */
+    position: absolute;
+    left: 0;
+}
+.book{
+    height: 100vh;
+    width: 150vh;
+    background-image: url(./Images/book.png);
+    background-repeat: no-repeat; 
+    background-size:cover;  
+    top: 100px;
+    position: absolute;
+    left: 250px;
+}
+.pages{
+    position: absolute;
+    width: 330px;
+    height: 520px;
+    left: 140px;
+    top: 80px;
+    background-image:url(./Images/card1.png);
+    background-size:contain;
+    background-repeat: no-repeat;   
+    border-radius: 15px;
+    background-repeat: no-repeat;
+}
+h1{
+    font-family: 'magic',Arial, Helvetica, sans-serif;
+    font-size: 38px;
+    background: radial-gradient(circle, #6B5B51, #654B38);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    top: 220px;
+    text-align: center;
+}
+h2{
+    font-family: 'Libre Baskerville',Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color:  #6B5B51;
+    position: relative;
+    width: 250px;
+    top: 210px;
+    left: 40px;
+    padding-left: -30px;
+    text-align: center;
+}
+
+.questionContainer {
+    margin-bottom: 30px; /* Space below the question */
+    font-size: 20px; /* Larger font size for questions */
+    color: #333; /* Darker text for better readability */
+    font-weight: bold; /* Bold questions for emphasis */
+}
+
+.answerButtons {
+    display: flex; /* Use flexbox for button alignment */
+    flex-wrap: wrap; /* Allow buttons to wrap to the next line */
+    justify-content: center; /* Center buttons horizontally */
+}
+
+.pages1 {
+    position: absolute;
+    width: 330px;
+    height: 520px;
+    perspective: 1000px;
+    left: 570px;
+    top: 80px;
+    background-image:url(./Images/card2.png);
+    background-size:contain;
+    background-repeat: no-repeat;   
+    
+}
+
+.options{
+    font-size: 15px;
+    position: absolute;
+    top: 120px;
+    left: 50px;
+    width: 230px;
+    height: 330px;
+    align-items: center;
+    text-align: center;
+}
+
+.answerButtons button {
+    display: inline-block; /* Ensure buttons are inline */
+    margin: 10px; /* Space between buttons */
+    padding: 12px 15px; /* Larger padding for buttons */
+    border: none; /* Remove default border */
+    border-radius: 10px; /* More rounded corners */
+    
+    color: white; /* White text color */
+    font-size: 18px; /* Increased font size for better readability */
+    transition: background-color 0.3s, transform 0.3s; /* Transition for hover effect */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #EADDCA; 
+    font-family: 'Garamond', serif;
+    font-weight: bolder;
+    text-align: center;
+    justify-content: center;
+}
+
+.answerButtons button:hover {
+    background-color: #6F4C3E; /* Darker brown on hover */
+    transform: translateY(-2px); /* Lift button slightly on hover */
+}
+
+.result {
+    font-size: 28px; /* Larger font size for results */
+    margin-top: 20px; /* Space above results */
+    color: #8B4513; /* Brown color for results */
+    font-weight: bold; /* Bold results for emphasis */
+}
+
+.restartButton {
+    margin-top: 20px; /* Space above restart button */
+    padding: 12px 24px; /* Larger padding for restart button */
+    border: none; /* Remove default border */
+    border-radius: 10px; /* More rounded corners */
+    background-color: #28a745; /* Green color for restart button */
+    color: white; /* Text color */
+    font-size: 18px; /* Increased font size */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s, transform 0.3s; /* Transition for hover effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Button shadow for depth */
+}
+
+.restartButton:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: translateY(-2px); /* Lift button slightly on hover */
+}
+#res{
+    font-family: 'magic', Arial, Helvetica, sans-serif;
+    background: radial-gradient(circle, #6B5B51, #654B38);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 58px;
+    width: 330px;
+    height: 350px;
+    position: absolute;
+    left: 570px;
+    top: 120px;
+    justify-content: center;
+    align-items: center;
+
+}
+

@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "antd": "^5.21.4",
     "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.14"
   }
 }

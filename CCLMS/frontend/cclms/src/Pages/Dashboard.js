@@ -1,75 +1,51 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
+import styles from './Dashboard.module.css';
 
-const Dashboard = () => {
-  const [courses, setCourses] = useState([]);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const token = localStorage.getItem('token'); // Get token from local storage
-        const response = await axios.get('http://localhost:5000/courses', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setCourses(response.data);
-      } catch (err) {
-        setError('Failed to fetch courses.');
-      }
-    };
-
-    fetchCourses();
-  }, []);
-
+function Dashboard() {
   return (
-    <div style={styles.dashboardContainer}>
-      <h2 style={styles.title}>Your Courses</h2>
-      {error && <p style={styles.error}>{error}</p>}
-      <ul style={styles.courseList}>
-        {courses.map(course => (
-          <li key={course._id} style={styles.courseItem}>
-            {course.title}
-          </li>
-        ))}
-      </ul>
+    <div className={styles.dashboard}>
+      <h1 className={styles.title}>Welcome to the Wizard Dashboard</h1>
+      <p className={styles.subheading}>Your portal to magical learning</p>
+      <div className={styles.innerMenu}>
+        <Link to="/archive" className={styles.menuButton}>
+          <span className={styles.icon}>📚</span> Archive
+        </Link>
+        <Link to="/sorting" className={styles.menuButton}>
+          <span className={styles.icon}>🎩</span> Sorting Hat
+        </Link>
+        <Link to="/enrollment" className={styles.menuButton}>
+          <span className={styles.icon}>📝</span> Enrollment
+        </Link>
+        <Link to="/profile" className={styles.menuButton}>
+          <span className={styles.icon}>👤</span> Profile
+        </Link>
+      </div>
+      <div className={styles.quoteSection}>
+        <blockquote>
+          “It matters not what someone is born, but what they grow to be.” – Albus Dumbledore
+        </blockquote>
+      </div>
+      <div className={styles.cardContainer}>
+        <div className={styles.card}>
+          <h3>Latest Announcements</h3>
+          <p>No new announcements at this time.</p>
+        </div>
+        <div className={styles.card}>
+          <h3>Upcoming Events</h3>
+          <ul>
+            <li>Potions Class - October 25</li>
+            <li>Quidditch Match - November 1</li>
+            <li>Magical Creatures Workshop - November 10</li>
+          </ul>
+        </div>
+        <div className={styles.card}>
+          <h3>Your Progress</h3>
+          <p>Potions Mastery: 75%</p>
+          <p>Charms 101: 50%</p>
+        </div>
+      </div>
     </div>
   );
-};
-
-// Inline styles
-const styles = {
-  dashboardContainer: {
-    padding: '20px',
-    backgroundColor: '#f4f4f9', // Light gray background for a clean look
-    borderRadius: '8px',
-    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)', // Subtle shadow
-    maxWidth: '800px', // Max width for better readability
-    margin: '20px auto', // Center the container
-  },
-  title: {
-    marginBottom: '20px',
-    color: '#333', // Dark gray for better contrast
-    fontSize: '2em', // Larger font size for the title
-    fontWeight: '600', // Semi-bold font weight
-  },
-  error: {
-    color: 'red',
-    marginBottom: '10px', // Space below the error message
-  },
-  courseList: {
-    listStyleType: 'none', // Remove default list styling
-    padding: '0', // Remove default padding
-  },
-  courseItem: {
-    backgroundColor: '#fff', // White background for list items
-    padding: '15px',
-    margin: '10px 0', // Space between items
-    borderRadius: '5px', // Rounded corners
-    boxShadow: '0 1px 5px rgba(0, 0, 0, 0.1)', // Subtle shadow for items
-    transition: 'background 0.3s ease', // Smooth transition for hover effect
-  },
-};
+}
 
 export default Dashboard;

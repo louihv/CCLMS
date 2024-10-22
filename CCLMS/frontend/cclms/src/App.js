@@ -12,6 +12,12 @@ import PrivateRoute from './Components/PrivateRoute'; // Import PrivateRoute
 import { Navigate } from 'react-router-dom';
 import ArticleDetail from './Components/ArticleDetail';
 import ArticleList from './Components/ArticleList';
+import Archive from './Pages/Archives';
+import SortingHat from './Pages/SortingHatQuiz';
+import Enrollment from './Pages/Enrollment';
+import Profile from './Pages/Profile';
+import SortingHatQuestions from './Pages/SortingHatQuestions';
+
 
 function App() {
   return (
@@ -23,10 +29,15 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/archive" element={<Archive/>} />
+            <Route path="/sortinghat" element={<SortingHat/>} />
+            <Route path="/enrollment" element={<Enrollment/>} />
+            <Route path="/profile" element={<Profile/>} />
             <Route path="/hogwartsherald" element={<ArticleList />} />
             <Route path="/articles/:id" element={<ArticleDetail />} /> {/* Corrected route for article detail */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/sorting" element={<SortingHatQuestions />} />
           </Routes>
         </main>
         <ConditionalFooter /> {/* Conditionally render the footer */}

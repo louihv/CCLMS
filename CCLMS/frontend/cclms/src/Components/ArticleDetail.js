@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import styles from './ArticleDetail.module.css'; // Ensure this path is correct
+import styles from './CSS/ArticleDetail.module.css'; // Ensure this path is correct
 import backup from './Logo-CC.png'; // Optional backup logo
 
 const ArticleDetail = () => {

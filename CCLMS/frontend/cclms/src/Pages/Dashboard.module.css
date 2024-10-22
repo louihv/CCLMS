@@ -1,0 +1,93 @@
+/* Updated styles for the Dashboard with Maximalist Buttons */
+
+.dashboard {
+    margin-top: 10vh;
+    text-align: center;
+    background-color: #f0f4f8; /* Soft background for a modern look */
+    padding: 40px 20px; /* Padding for breathing space */
+    min-height: 100vh; /* Full height for the viewport */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content */
+  }
+  
+  .title {
+    font-size: 2.5rem; /* Larger title for emphasis */
+    color: #3c3c3c; /* Darker text color for contrast */
+    margin-bottom: 10px; /* Spacing below the title */
+  }
+  
+  .subheading {
+    font-size: 1.25rem; /* Subtitle styling */
+    margin: 10px 0 40px; /* Spacing above and below */
+    font-style: italic; /* Italicize for emphasis */
+    color: #666; /* Grey color for subtler emphasis */
+  }
+  
+  .innerMenu {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increased gap between buttons */
+    margin-top: 20px; /* Spacing from top */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  }
+  
+  .menuButton {
+    background-color: #ff4081; /* Vibrant pink for standout effect */
+    border: none;
+    padding: 20px 40px; /* Larger padding for a bolder look */
+    color: white;
+    text-decoration: none;
+    border-radius: 12px; /* More rounded corners */
+    font-size: 20px; /* Larger font size */
+    font-weight: bold; /* Bold font for emphasis */
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* Smooth transitions */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Increased shadow for depth */
+    position: relative; /* Positioning for hover effect */
+    overflow: hidden; /* To contain the hover effect */
+    flex: 1 1 calc(25% - 30px); /* Maximize button space while allowing for wrapping */
+    min-width: 250px; /* Minimum width for buttons */
+  }
+  
+  .menuButton:hover {
+    background-color: #e91e63; /* Darker pink on hover */
+    transform: scale(1.05); /* Slightly scale up on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Increased shadow on hover */
+  }
+  
+  .icon {
+    margin-right: 8px; /* Spacing between icon and text */
+    font-size: 24px; /* Icon size for better visibility */
+  }
+  
+  .quoteSection {
+    margin-top: 40px; /* Space above the quote */
+    font-style: italic; /* Italicize for emphasis */
+    color: #444; /* Dark grey color for the quote */
+    border-top: 1px solid #ccc; /* Top border for separation */
+    padding-top: 20px; /* Padding above the quote */
+  }
+  
+  .cardContainer {
+    display: flex;
+    justify-content: space-between; /* Distribute space evenly */
+    margin-top: 40px; /* Spacing from top */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    width: 100%; /* Take full width */
+  }
+  
+  .card {
+    background: #fff; /* White background for cards */
+    border-radius: 8px; /* Rounded corners for cards */
+    padding: 20px; /* Padding inside cards */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    transition: transform 0.2s; /* Smooth transformation */
+    flex: 1 1 calc(30% - 20px); /* Flex-grow, shrink, basis; adjust for spacing */
+    margin: 10px; /* Space around cards */
+    min-width: 250px; /* Minimum width for cards */
+  }
+  
+  .card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+  }
+  

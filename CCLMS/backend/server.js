@@ -7,6 +7,12 @@ const Article = require('./models/Articles'); // Ensure this path is correct
 const authRoutes = require('./routes/auth'); // Adjust the path according to your project structure
 const articlesRoutes = require('./routes/articles'); // Import articles routes
 
+const userRoutes = require('./routes/userRoutes');
+const archiveRoutes = require('./routes/archiveRoutes');
+const sortingHatRoutes = require('./routes/sortingHatRoutes');
+const enrollmentRoutes = require('./routes/enrollmentRoutes');
+const profileRoutes = require('./routes/userRoutes'); // Adjust the path based on your project structure
+
 const app = express();
 
 // Middleware
@@ -20,6 +26,16 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads'))); // Adju
 // Use the routes
 app.use('/api/auth', authRoutes); // Authentication routes
 app.use('/api/articles', articlesRoutes); // Articles routes
+app.use('/api/users', userRoutes);
+app.use('/api/archive', archiveRoutes);
+
+app.use('/api/enrollment', enrollmentRoutes);
+app.use('/api', sortingHatRoutes);
+
+// In your server.js or index.js (the main backend file)
+app.use('/api', profileRoutes); // Mount the profile routes under the '/api' prefix
+
+
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://sevillazion23:112303zi@charmcasters-cluster.zqwca.mongodb.net/', { // Use environment variable

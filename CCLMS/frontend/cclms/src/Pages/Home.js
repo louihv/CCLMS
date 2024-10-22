@@ -1,7 +1,9 @@
 import React from 'react';
-import './Home.css'; // Import the CSS file
-
-
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import './Home.css'; // Import CSS for styling
+import dailyprophet from './Images/DailyProphet.jpg';
+import workspace from './Images/Workspace.1.jpg';
+import sortinghat from './Images/SortingHat.png';
 
 const Home = () => {
   return (
@@ -21,21 +23,27 @@ const Home = () => {
         </div>
         <section className="featuredSection">
           <div className="grid">
-            {/* Sample Cards */}
+            {/* Article Cards */}
             <ArticleCard
-              imageSrc="path/to/image1.jpg"
-              title="Hogwarts Herald"
+              className='dailyprophet'
+              imageSrc={dailyprophet} // Assuming it's in the public folder
+              title="Daily Prophet"
               description="Your go-to source for the latest news and events in the wizarding world. Stay informed and engaged!"
+              targetPath="/hogwartsherald" // Path to navigate to
             />
             <ArticleCard
-              imageSrc="path/to/image2.jpg"
+              className='workspace'
+              imageSrc={workspace}
               title="Wizarding Workspace"
               description="A centralized dashboard for wizards to manage spells, track magical tasks, and access essential resources for their enchanting adventures."
+              targetPath="/dashboard" // Path to navigate to
             />
-            <ArticleCard
-              imageSrc="path/to/image3.jpg"
+            <ArticleCard 
+              className='sorting'
+              imageSrc={sortinghat}
               title="Sorting Hat"
               description="Experience the magic of the Sorting Hat as it determines your Hogwarts house through a fun and interactive quiz, guiding you to your true magical home!"
+              targetPath="/sortinghat" // Path to navigate to
             />
           </div>
         </section>
@@ -44,10 +52,12 @@ const Home = () => {
   );
 };
 
-const ArticleCard = ({ imageSrc, title, description }) => {
+const ArticleCard = ({ imageSrc, title, description, targetPath }) => {
+  const navigate = useNavigate(); // Initialize useNavigate hook for navigation
+
   const handleClick = () => {
-    // Implement your navigation logic here
-    console.log(`${title} card clicked`);
+    // Navigate to the specified path when the card is clicked
+    navigate(targetPath);
   };
 
   return (

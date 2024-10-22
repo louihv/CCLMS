@@ -1,0 +1,14 @@
+.archive {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  ul {
+    list-style-type: none;
+  }
+  
+  li {
+    padding: 10px 0;
+    font-size: 18px;
+  }
+  

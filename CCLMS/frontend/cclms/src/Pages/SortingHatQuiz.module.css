@@ -1,0 +1,76 @@
+/* SortingHatQuiz.module.css */
+
+.quizContainer {
+    max-width: 600px; /* Set a maximum width for the container */
+    margin: 15vh auto; /* Center horizontally and give a margin at the top */
+    padding: 30px; /* Increased padding for a more spacious feel */
+    text-align: center; /* Center text inside the container */
+    border: 3px solid #8B4513; /* Brown border for a rustic look */
+    border-radius: 15px; /* More pronounced rounded corners */
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Deeper shadow for a more magical depth */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    min-height: 75vh; /* Ensure the container takes at least 75% of the viewport height */
+    font-family: 'Garamond', serif; /* Elegant font for a classic feel */
+}
+
+/* Additional styles for question and button containers */
+.questionContainer {
+    margin-bottom: 30px; /* Space below the question */
+    font-size: 20px; /* Larger font size for questions */
+    color: #333; /* Darker text for better readability */
+    font-weight: bold; /* Bold questions for emphasis */
+}
+
+.answerButtons {
+    display: flex; /* Use flexbox for button alignment */
+    flex-wrap: wrap; /* Allow buttons to wrap to the next line */
+    justify-content: center; /* Center buttons horizontally */
+}
+
+.answerButtons button {
+    display: inline-block; /* Ensure buttons are inline */
+    margin: 10px; /* Space between buttons */
+    padding: 12px 24px; /* Larger padding for buttons */
+    border: none; /* Remove default border */
+    border-radius: 10px; /* More rounded corners */
+    background-color: #8B4513; /* Rich brown color for buttons */
+    color: white; /* White text color */
+    font-size: 18px; /* Increased font size for better readability */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s, transform 0.3s; /* Transition for hover effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Button shadow for depth */
+}
+
+.answerButtons button:hover {
+    background-color: #6F4C3E; /* Darker brown on hover */
+    transform: translateY(-2px); /* Lift button slightly on hover */
+}
+
+.result {
+    font-size: 28px; /* Larger font size for results */
+    margin-top: 20px; /* Space above results */
+    color: #8B4513; /* Brown color for results */
+    font-weight: bold; /* Bold results for emphasis */
+}
+
+.restartButton {
+    margin-top: 20px; /* Space above restart button */
+    padding: 12px 24px; /* Larger padding for restart button */
+    border: none; /* Remove default border */
+    border-radius: 10px; /* More rounded corners */
+    background-color: #28a745; /* Green color for restart button */
+    color: white; /* Text color */
+    font-size: 18px; /* Increased font size */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s, transform 0.3s; /* Transition for hover effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Button shadow for depth */
+}
+
+.restartButton:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: translateY(-2px); /* Lift button slightly on hover */
+}

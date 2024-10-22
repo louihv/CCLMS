@@ -8,6 +8,8 @@ const UserSchema = new mongoose.Schema({
     address: { type: String, required: true },
     contact: { type: String, required: true },
     password: { type: String, required: true },
+    house: {type: String},
+    enrolledSubjects: [String],
 });
 
 module.exports = mongoose.model('User', UserSchema);

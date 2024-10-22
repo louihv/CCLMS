@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import styles from './ArticleList.module.css';
+import styles from './CSS/ArticleList.module.css';
 
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
@@ -30,7 +30,7 @@ const ArticleList = () => {
     <div className={styles.articleListContainer}>
       {/* Hero Heading Section */}
       <div className={styles.heroSection}>
-        <h1 className={styles.heroTitle}>The Hogwarts Herald</h1>
+        <h1 className={styles.heroTitle}>The Daily Prophet</h1>
         <p className={styles.heroSubtitle}>Your Magical Source for News, Features, and Events</p>
       </div>
 

@@ -30,6 +30,7 @@ router.post('/register', async (req, res) => {
         email,
         address,
         contact,
+        house,
         password: hashedPassword, // Store hashed password
     });
 

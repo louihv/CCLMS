@@ -1,0 +1,23 @@
+.enrollment {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  label {
+    margin-left: 10px;
+  }
+  
+  .submitButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submitButton:hover {
+    background-color: #005bb5;
+  }
+  
