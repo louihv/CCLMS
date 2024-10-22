@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './SortingHatQuestions.module.css'; 
+import { useNavigate  } from 'react-router-dom';
 
 // Updated questions and answers
 const questions = [
@@ -102,6 +103,8 @@ const SortingHatQuiz = () => {
   const [house, setHouse] = useState("");
   const userId = localStorage.getItem('userId') || 'defaultUser Id'; // Fetch userId from localStorage or set a default
 
+  const audioRef = React.useRef(null);
+
   const handleAnswerClick = (house) => {
     setScores(prevScores => ({
       ...prevScores,
@@ -142,15 +145,26 @@ const SortingHatQuiz = () => {
     setHouse("");
   };
 
+  const navigate = useNavigate();
+  const handleRedirect = () => {
+    navigate('/dashboard'); // Replace '/new-route' with your desired path
+  };
+
+    
+
   return (
   
     <div className={styles.quizContainer}>
     <div className={styles.book}>
       {showResult ? (
         <div className={styles.result}>
-           <div className={styles.pages}></div>
-          <h2 id={styles.res}>You belong to {house}!</h2>
+           <audio ref={audioRef} src="./Sounds/page_sfx.mp3" preload="auto" />
+           <div className={styles.pages}>
+           <h1 className={styles.resolution}>You belong to {house}!</h1>
+           </div>
+          <h2 id={styles.welcome}>Welcome to Hogwarts!</h2>
           {/* <button className={styles.restartButton} onClick={restartQuiz}>Restart Quiz</button> */}
+          <button className={styles.restartButton} onClick={handleRedirect}>Go back</button>
         </div>
         
       ) : (

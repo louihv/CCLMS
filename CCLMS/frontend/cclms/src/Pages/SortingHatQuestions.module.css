@@ -58,9 +58,10 @@ h2{
     font-size: 15px;
     color:  #6B5B51;
     position: relative;
-    width: 250px;
-    top: 210px;
-    left: 40px;
+    width: 270px;
+    top: 220px;
+    left: 48px;
+    width: 240px;
     padding-left: -30px;
     text-align: center;
 }
@@ -94,18 +95,19 @@ h2{
 .options{
     font-size: 15px;
     position: absolute;
-    top: 120px;
+    top: 100px;
     left: 50px;
     width: 230px;
     height: 330px;
     align-items: center;
     text-align: center;
+    justify-content: center;
 }
 
 .answerButtons button {
     display: inline-block; /* Ensure buttons are inline */
     margin: 10px; /* Space between buttons */
-    padding: 12px 15px; /* Larger padding for buttons */
+    padding: 1px 15px; /* Larger padding for buttons */
     border: none; /* Remove default border */
     border-radius: 10px; /* More rounded corners */
     
@@ -135,35 +137,58 @@ h2{
 }
 
 .restartButton {
-    margin-top: 20px; /* Space above restart button */
-    padding: 12px 24px; /* Larger padding for restart button */
     border: none; /* Remove default border */
-    border-radius: 10px; /* More rounded corners */
-    background-color: #28a745; /* Green color for restart button */
-    color: white; /* Text color */
+
+    /* background-image: url(./Images/buttons.png); */
+
+    background-color: #6B5B51;
+    border-radius: 15px;
+    background-size:contain;
+    width: 200px;
+    height: 50px;
+    background-repeat: no-repeat;   
+    background-repeat: no-repeat;
+    color: #0a0703; /* Text color */
     font-size: 18px; /* Increased font size */
-    cursor: pointer; /* Change cursor on hover */
+    cursor: pointer; 
+    font-weight: bold;
     transition: background-color 0.3s, transform 0.3s; /* Transition for hover effect */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Button shadow for depth */
+    position: absolute;
+    top: 450px;
+    right: 200px;
+    text-align: center;
+    font-family: 'Libre Baskerville', serif;
+    
 }
 
 .restartButton:hover {
-    background-color: #218838; /* Darker green on hover */
-    transform: translateY(-2px); /* Lift button slightly on hover */
+    
+    transform: translateY(-2px)
+    scale(220px); /* Lift button slightly on hover */
+    
 }
-#res{
+#welcome{
     font-family: 'magic', Arial, Helvetica, sans-serif;
-    background: radial-gradient(circle, #6B5B51, #654B38);
+    background: radial-gradient(circle, #6B5B51, #0a0703);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 58px;
+    font-size: 78px;    
     width: 330px;
     height: 350px;
     position: absolute;
     left: 570px;
-    top: 120px;
+    top: 100px;
     justify-content: center;
     align-items: center;
 
 }
 
+.resolution{
+    position: absolute;
+    /* box-shadow: 0 4px 6px rgba(31, 12, 12, 0.838); */
+    top: 230px;
+    left:80px;
+    width: 200px;
+    height: 100px;
+    line-height: 120%;
+}
