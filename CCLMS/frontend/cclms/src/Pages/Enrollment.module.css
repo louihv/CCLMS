@@ -20,6 +20,7 @@
   .sec{
     position: absolute;
     top: 320px;
+    left: 30;
   }
   
   label {
