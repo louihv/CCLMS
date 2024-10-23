@@ -46,9 +46,13 @@ function Enrollment({ userId }) {
 
   return (
     <div className={styles.enrollment}>
-    <section className={styles.header}></section>
+    <section className={styles.header}>
+      <h1>Indulge your Knowledge</h1>
+      <h3>It is our choices that show what we truly are, far more than our abilities.</h3>
+    </section>
+    <section className={styles.contents}>
     <div className={styles.sec}>
-      <h2>Enrollment</h2>
+      <h2>Enroll with us!</h2>
       <form onSubmit={handleSubmit}>
         {subjects.map((subject, index) => (
           <div key={index}>
@@ -67,6 +71,7 @@ function Enrollment({ userId }) {
         </button>
       </form>
       </div>
+      </section>
     </div>
   );
 }

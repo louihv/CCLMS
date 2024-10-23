@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './SortingHatQuestions.module.css'; 
+import axios from 'axios';
 import { useNavigate  } from 'react-router-dom';
 
 // Updated questions and answers
@@ -101,9 +102,31 @@ const SortingHatQuiz = () => {
   const [scores, setScores] = useState({ Gryffindor: 0, Hufflepuff: 0, Ravenclaw: 0, Slytherin: 0 });
   const [showResult, setShowResult] = useState(false);
   const [house, setHouse] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
   const userId = localStorage.getItem('userId') || 'defaultUser Id'; // Fetch userId from localStorage or set a default
 
-  const audioRef = React.useRef(null);
+  const Modal = ({ message, onClose }) => {
+    return (
+      <div className={styles.modalOverlay}>
+        <div className={styles.modalContent}>
+          <h2>{message}</h2>
+          <button onClick={onClose}>Close</button>
+        </div>
+      </div>
+    );
+  };
+  
+
+  // Check if the user has already attempted the quiz
+  useEffect(() => {
+    const hasAttempted = localStorage.getItem(`quizAttempted_${userId}`);
+    if (hasAttempted) {
+      // Redirect to dashboard or show a message
+      setShowModal(true); // Show modal if already attempted
+      navigate('/dashboard'); // Change this to your desired route
+    }
+  }, [navigate, userId]);
 
   const handleAnswerClick = (house) => {
     setScores(prevScores => ({
@@ -120,13 +143,14 @@ const SortingHatQuiz = () => {
       setHouse(sortedHouse);
       setShowResult(true);
       
-      // Send a request to the backend to update the user's house
+      // Store the user's house and mark the quiz as attempted
+      localStorage.setItem(`quizAttempted_${userId}`, 'true'); // Mark as attempted
       fetch('/api/update-house', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ house: sortedHouse, userId }) // Use the fetched userId
+        body: JSON.stringify({ house: sortedHouse, userId })
       })
       .then(response => response.json())
       .then(data => {
@@ -138,19 +162,13 @@ const SortingHatQuiz = () => {
     }
   };
 
-  const restartQuiz = () => {
-    setCurrentQuestion(0);
-    setScores({ Gryffindor: 0, Hufflepuff: 0, Ravenclaw: 0, Slytherin: 0 });
-    setShowResult(false);
-    setHouse("");
-  };
-
-  const navigate = useNavigate();
   const handleRedirect = () => {
-    navigate('/dashboard'); // Replace '/new-route' with your desired path
+    navigate('/dashboard'); // Replace with your desired path
   };
-
     
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
   
@@ -158,7 +176,7 @@ const SortingHatQuiz = () => {
     <div className={styles.book}>
       {showResult ? (
         <div className={styles.result}>
-           <audio ref={audioRef} src="./Sounds/page_sfx.mp3" preload="auto" />
+           {/* <audio ref={audioRef} src="./Sounds/page_sfx.mp3" preload="auto" /> */}
            <div className={styles.pages}>
            <h1 className={styles.resolution}>You belong to {house}!</h1>
            </div>
@@ -188,6 +206,12 @@ const SortingHatQuiz = () => {
         </div>
       )}
     </div>
+    {showModal && (
+        <Modal 
+          message="You have already attempted the quiz!" 
+          onClose={closeModal} 
+        />
+      )}
     </div>
   );
 };
