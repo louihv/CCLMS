@@ -1,4 +1,11 @@
 /* src/Components/Register.module.css */
+@font-face {
+    font-family: 'Sofia Pro Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: url(./CSS/Sofia\ Pro\ Regular\ Az.otf);
+    }
+
 
 input[type="password"]::-ms-reveal {
     filter: invert(100%); /* Inverts the color for visibility */
@@ -42,8 +49,8 @@ input[type="password"]::-ms-reveal {
 }
 
 .logo {
-    margin-top: -50px;
-    height: 120px;
+    margin-top: -30px;
+    height: 90px;
     width: auto;
 }
 
@@ -56,6 +63,7 @@ input[type="password"]::-ms-reveal {
 }
 
 .title {
+    font-family: Sofia Pro Regular;
     margin-bottom: 25px;
     color: #ffffff;
     font-size: 2.5em;
@@ -64,7 +72,9 @@ input[type="password"]::-ms-reveal {
 }
 
 .error {
+    font-family: Sofia Pro Regular;
     color: #e74c3c;
+    text-align: center;
     margin-bottom: 15px;
     font-size: 0.9em;
 }
@@ -87,6 +97,7 @@ input[type="password"]::-ms-reveal {
 }
 
 .inputLabel {
+    font-family: Sofia Pro Regular;
     text-align: left;
     margin-bottom: 5px;
     color: #ffffff;
@@ -94,6 +105,7 @@ input[type="password"]::-ms-reveal {
 }
 
 .input {
+    font-family: Sofia Pro Regular;
     background-color: rgba(46, 39, 67, 0.25); /* Transparent input background */
     padding: 12px;
     border-radius: 8px;
@@ -116,6 +128,7 @@ input[type="password"]::-ms-reveal {
 }
 
 .button {
+    font-family: Sofia Pro Regular;
     margin-top: 15px;
     margin-bottom: 15px;
     padding: 12px;
@@ -131,10 +144,12 @@ input[type="password"]::-ms-reveal {
 
 .button:hover {
     background: linear-gradient(90deg, #260077, #23007a);
+    border: 1px solid #3c00bc;
     transform: translateY(-2px); /* Slight lift effect on hover */
 }
 
 .link {
+    font-family: Sofia Pro Regular;
     margin-top: 15px;
     color: #ffffff;
     text-decoration: none;

@@ -1,0 +1,118 @@
+
+
+
+
+.mainContainer{
+    margin-top: 8vh;
+      text-align: center;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.523)), url(https://live.staticflickr.com/5444/7375631634_64e0c5b687_b.jpg);
+      background-color: rgb(21, 1, 1);
+      background-size: cover;
+      background-position: center;  
+      background-repeat: no-repeat;
+      /* background-attachment: fixed; */
+      padding: 60px 40px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* pano to center tabang mama */
+      position: relative;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      color: white;
+    
+    }
+    .head{
+      font-family: 'Sofia Pro Regular', sans-serif;
+      font-size: 1.2em;
+      line-height: 100%;
+      
+    }
+    .head h2{
+      font-family: 'Garamond', serif;
+    /* font-style: italic; */
+    }
+    .mainthing{
+      color: white;
+      min-height: 60vh;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+    .mainthing h2{
+      position: relative;
+      top: 370px;
+      font-size: 40px;
+      /* font-family: 'Sofia Pro Regular', sans-serif; */
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      
+    }
+    
+    .mainthing .crystal_ball{
+      border: 2px white solid;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 220px;
+      cursor: pointer;
+      left: 600px;
+      border-radius: 50%;
+     background-image: linear-gradient(rgba(0, 0, 0, 0.771), rgba(0, 0, 0, 0.053)), url(https://st2.depositphotos.com/1007879/43038/i/450/depositphotos_430385496-stock-photo-360-degree-space-nebula-panorama.jpg); 
+      background-size: 110% 100%;
+      animation-name: moonRotation;
+      animation-duration:40s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-fill-mode: forwards !important;
+      /* box-shadow: inset -30px 8px 16px -5px #d5cfcf,
+      inset 10px 5px 20px 13px rgba(239, 226, 226, 0.9),
+      0px -47px 86px 54px rgba(246, 230, 230, 0.322); */
+      box-shadow: inset 0px 0px 10px 0px #d5cfcf,
+      inset 0px 5px 10px 3px rgba(239, 226, 226, 0.9),
+      0px 0px 46px 24px rgba(246, 230, 230, 0.322);
+      /* first set inset */
+      /* 2nd set is the intensity */
+      /* 3rd is the outside glow */
+    }
+    @keyframes moonRotation {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 150% 0%; }
+      100% { background-position: 300% 0%; }
+    }
+    .fortuneDisplay {
+       margin: 100px auto;
+      padding: 15px 20px;
+      outline: none ;
+      border-radius: 15px;
+      color: #240505;
+      text-align: center;
+      font-size: 1.5em;
+      font-family: 'Sofia Pro Regular', sans-serif;
+      /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
+      box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.378); /* Soft inset shadow */
+      min-height: 50px;
+      min-width: 500px;
+      cursor: pointer;
+      position: relative;
+      z-index: 0;
+      outline: none;
+      border: 3px solid #f8e1d1	;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #240f8c4c;
+    
+    }
+    .fortuneDisplay h3{
+      font-family: 'Libre Baskerville', sans-serif;
+      font-weight:bolder ;  
+      color: goldenrod;
+    }
+    .fortuneDisplay p{
+      color: #be6d38;
+    }
+    

@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Sofia Pro Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url(./CSS/Sofia\ Pro\ Regular\ Az.otf);
+  }
+
+
 .logo {
   margin-top: -100px;
   height: 120px;
@@ -17,7 +25,7 @@
   background-size: cover;
   background-position: center;
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: Sofia Pro Regular;
 }
 
 .formContainer {
@@ -64,11 +72,12 @@
 
 .input {
   background-color: #2e274341;
+  font-family: Sofia Pro Regular;
   padding: 12px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 16px;
-  color: #ccc;
+  color: #000000;
   transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -88,11 +97,13 @@
   color: white;
   cursor: pointer;
   font-size: 18px;
+  font-family: Sofia Pro Regular;
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .button:hover {
   background: linear-gradient(90deg, #260077, #23007a);
+  border: 1px solid #3c00bc;
   transform: translateY(-2px);
 }
 
@@ -104,6 +115,55 @@
   transition: color 0.3s ease;
 }
 
+.link1 {
+  margin-top: 10px;
+  text-align: left;
+  margin-bottom: -15px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
 .link:hover {
   color: #8c7ec8;
 }
+
+.modal h2{
+  color: #000;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  position: relative;
+}
+
+
+
+option{
+  color: black;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+

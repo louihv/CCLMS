@@ -1,93 +1,182 @@
-/* Updated styles for the Dashboard with Maximalist Buttons */
+/* Hogwarts-Themed Dashboard Container */
+.dashboard-container {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: 'Cinzel', serif; /* Hogwarts-inspired font */
+  color: #ececec; /* Light text for contrast */
+  background: linear-gradient(to bottom right, #1c1c1c, #333333); /* Subtle background gradient */
+}
 
+@font-face {
+  font-family: harrypotter;
+  src: url(./CSS/Animales\ Fantastic.ttf);
+}
+
+@font-face {
+  font-family: 'Sofia Pro Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url(./CSS/Sofia\ Pro\ Regular\ Az.otf);
+}
+
+/* Dashboard Layout */
 .dashboard {
-    margin-top: 10vh;
-    text-align: center;
-    background-color: #f0f4f8; /* Soft background for a modern look */
-    padding: 40px 20px; /* Padding for breathing space */
-    min-height: 100vh; /* Full height for the viewport */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center content */
-  }
+  margin-top: 8vh;
+  text-align: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(./Images/bg-main.jpg);
+  background-color: rgb(36, 36, 36);
+  background-size: cover;
+  padding: 60px 40px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
   
-  .title {
-    font-size: 2.5rem; /* Larger title for emphasis */
-    color: #3c3c3c; /* Darker text color for contrast */
-    margin-bottom: 10px; /* Spacing below the title */
-  }
+}
+
+/* Title and Subheading */
+.dashboard .title {
+  font-family: harrypotter;
+  font-size: 3.5rem;
+  color: #f5f5dc;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Text shadow for a magical glow */
+  margin-bottom: 0.5rem;
+}
+
+.dashboard .subheading {
+  font-size: 1.75rem;
+  font-style: italic;
+  color: #f8f8f2;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  margin: 10px 0 40px;
+}
+
+/* Menu Button Container */
+.dashboard .innerMenu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 2400px;
+  display: inline-block;
+  white-space: nowrap;
+  margin: 30px auto;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid white; */
+
+}
+
+.dashboard .menuButton {
+  background-color: rgba(40, 40, 40, 0.7);
+  font-family: 'Sofia Pro Regular', sans-serif;
+  letter-spacing: 1.5px;
+  padding: 20px 30px;
+  color: #ececec;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  border: 1px solid #ececec;
+  cursor: pointer;
+  text-decoration: none;
+  min-width: 220px;
+  max-width: 250px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
   
-  .subheading {
-    font-size: 1.25rem; /* Subtitle styling */
-    margin: 10px 0 40px; /* Spacing above and below */
-    font-style: italic; /* Italicize for emphasis */
-    color: #666; /* Grey color for subtler emphasis */
+}
+
+.dashboard .menuButton:hover {
+  background-color: #5758ff; /* Deep purple glow effect on hover */
+  color: #f5f5f5;
+  border-color: #8787ff;
+  transform: translateY(-3px); /* Slight lift on hover */
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.4); /* Lighter shadow on hover */
+}
+
+.menuButton:active {
+  transform: translateY(1px); /* Button press effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Icon in Button */
+.dashboard .icon {
+  margin-right: 8px;
+  font-size: 28px;
+  color: #ececec;
+}
+
+/* House-Specific Colors for Buttons */
+.dashboard .menuButton.gryffindor {
+  background-color: #7f0909;
+}
+
+.dashboard .menuButton.slytherin {
+  background-color: #1a472a;
+}
+
+.dashboard .menuButton.ravenclaw {
+  background-color: #0e1a40;
+}
+
+.dashboard .menuButton.hufflepuff {
+  background-color: #ecb939;
+}
+
+/* Magical Quote Section */
+.dashboard .quoteSection {
+  margin-top: 40px;
+  font-style: italic;
+  color: #ffffff;
+  border-top: 1px solid #ffffff;
+  padding-top: 20px;
+  font-size: 1.25rem;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Card Container */
+.dashboard .cardContainer {
+  font-family: 'Sofia Pro Regular', sans-serif;
+  text-align: left;
+  display: flex;
+  margin-top: 50px;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Card Styling */
+.dashboard .card {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1 1 calc(30% - 20px);
+  margin: 15px;
+  min-width: 260px;
+}
+
+.dashboard .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard .menuButton {
+    padding: 15px 25px;
+    font-size: 1.1rem;
   }
-  
-  .innerMenu {
-    display: flex;
-    justify-content: center;
-    gap: 30px; /* Increased gap between buttons */
-    margin-top: 20px; /* Spacing from top */
-    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  .dashboard .title {
+    font-size: 2.8rem;
   }
-  
-  .menuButton {
-    background-color: #ff4081; /* Vibrant pink for standout effect */
-    border: none;
-    padding: 20px 40px; /* Larger padding for a bolder look */
-    color: white;
-    text-decoration: none;
-    border-radius: 12px; /* More rounded corners */
-    font-size: 20px; /* Larger font size */
-    font-weight: bold; /* Bold font for emphasis */
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* Smooth transitions */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Increased shadow for depth */
-    position: relative; /* Positioning for hover effect */
-    overflow: hidden; /* To contain the hover effect */
-    flex: 1 1 calc(25% - 30px); /* Maximize button space while allowing for wrapping */
-    min-width: 250px; /* Minimum width for buttons */
+  .dashboard .subheading {
+    font-size: 1.4rem;
   }
-  
-  .menuButton:hover {
-    background-color: #e91e63; /* Darker pink on hover */
-    transform: scale(1.05); /* Slightly scale up on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Increased shadow on hover */
+  .dashboard .card {
+    flex: 1 1 100%;
   }
-  
-  .icon {
-    margin-right: 8px; /* Spacing between icon and text */
-    font-size: 24px; /* Icon size for better visibility */
-  }
-  
-  .quoteSection {
-    margin-top: 40px; /* Space above the quote */
-    font-style: italic; /* Italicize for emphasis */
-    color: #444; /* Dark grey color for the quote */
-    border-top: 1px solid #ccc; /* Top border for separation */
-    padding-top: 20px; /* Padding above the quote */
-  }
-  
-  .cardContainer {
-    display: flex;
-    justify-content: space-between; /* Distribute space evenly */
-    margin-top: 40px; /* Spacing from top */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    width: 100%; /* Take full width */
-  }
-  
-  .card {
-    background: #fff; /* White background for cards */
-    border-radius: 8px; /* Rounded corners for cards */
-    padding: 20px; /* Padding inside cards */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-    transition: transform 0.2s; /* Smooth transformation */
-    flex: 1 1 calc(30% - 20px); /* Flex-grow, shrink, basis; adjust for spacing */
-    margin: 10px; /* Space around cards */
-    min-width: 250px; /* Minimum width for cards */
-  }
-  
-  .card:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-  }
-  
+}

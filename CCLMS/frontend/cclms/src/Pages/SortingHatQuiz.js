@@ -1,174 +1,188 @@
-import React, { useState } from 'react';
-import styles from './SortingHatQuiz.module.css'; // Import the CSS module
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'; // Import axios for API calls
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import styles from './SortingHatQuiz.module.css'; // Import the CSS Module
 
-// Updated questions and answers
 const questions = [
-  {
-    question: "If you could possess one extraordinary ability, what would it be?",
-    answers: [
-      { text: "Telepathy", house: "Ravenclaw" },
-      { text: "Invincibility", house: "Gryffindor" },
-      { text: "Manipulation of time", house: "Slytherin" },
-      { text: "The power to heal", house: "Hufflepuff" }
-    ]
-  },
-  {
-    question: "When faced with a difficult decision, what do you rely on most?",
-    answers: [
-      { text: "My gut feeling", house: "Gryffindor" },
-      { text: "Research and data", house: "Ravenclaw" },
-      { text: "The opinions of my close friends", house: "Hufflepuff" },
-      { text: "A strategic plan", house: "Slytherin" }
-    ]
-  },
-  {
-    question: "What would you do if you found a lost treasure?",
-    answers: [
-      { text: "Share it with my friends", house: "Hufflepuff" },
-      { text: "Use it to pursue my ambitions", house: "Slytherin" },
-      { text: "Donate it to a worthy cause", house: "Gryffindor" },
-      { text: "Research its origins", house: "Ravenclaw" }
-    ]
-  },
-  {
-    question: "In a heated debate, you are most likely to...",
-    answers: [
-      { text: "Stand firm in your beliefs", house: "Gryffindor" },
-      { text: "Listen to all sides before responding", house: "Hufflepuff" },
-      { text: "Use logic and facts to persuade others", house: "Ravenclaw" },
-      { text: "Try to outsmart your opponent", house: "Slytherin" }
-    ]
-  },
-  {
-    question: "What drives you to pursue your goals?",
-    answers: [
-      { text: "A desire to prove myself", house: "Gryffindor" },
-      { text: "A sense of duty to help others", house: "Hufflepuff" },
-      { text: "The thrill of intellectual challenge", house: "Ravenclaw" },
-      { text: "The ambition to rise to power", house: "Slytherin" }
-    ]
-  },
-  {
-    question: "How do you handle failure?",
-    answers: [
-      { text: "Learn from it and move on", house: "Hufflepuff" },
-      { text: "Analyze what went wrong for next time", house: "Ravenclaw" },
-      { text: "Use it as motivation to succeed", house: "Gryffindor" },
-      { text: "Find a way to turn it to my advantage", house: "Slytherin" }
-    ]
-  },
-  {
-    question: "What kind of environment do you thrive in?",
-    answers: [
-      { text: "One filled with challenges", house: "Gryffindor" },
-      { text: "A supportive and collaborative community", house: "Hufflepuff" },
-      { text: "A place that stimulates my mind", house: "Ravenclaw" },
-      { text: "A competitive atmosphere", house: "Slytherin" }
-    ]
-  },
-  {
-    question: "If you could choose a companion animal, what would it be?",
-    answers: [
-      { text: "A loyal dog", house: "Hufflepuff" },
-      { text: "A majestic eagle", house: "Ravenclaw" },
-      { text: "A cunning fox", house: "Slytherin" },
-      { text: "A brave lion", house: "Gryffindor" }
-    ]
-  },
-  {
-    question: "What motivates you to help others?",
-    answers: [
-      { text: "A sense of justice", house: "Gryffindor" },
-      { text: "The joy of making others happy", house: "Hufflepuff" },
-      { text: "A desire for knowledge and understanding", house: "Ravenclaw" },
-      { text: "The opportunity to gain influence", house: "Slytherin" }
-    ]
-  },
-  {
-    question: "When envisioning your future, what do you see?",
-    answers: [
-      { text: "A legacy of bravery", house: "Gryffindor" },
-      { text: "A community built on trust", house: "Hufflepuff" },
-      { text: "Achievements that challenge my intellect", house: "Ravenclaw" },
-      { text: "A position of power and respect", house: "Slytherin" }
-    ]
-  }
+    {
+        question: "Which activity makes you feel the most alive?",
+        options: ["Embarking on an adventure", "Diving into a good book", "Competing in sports", "Making something with your hands"],
+    },
+    {
+        question: "Which trait do you admire most in others?",
+        options: ["Boldness", "Insight", "Dependability", "Originality"],
+    },
+    {
+        question: "What legacy do you hope to leave behind?",
+        options: ["Fearless leadership", "A wealth of knowledge", "Strong relationships", "Inspiring creativity"],
+    },
+    {
+        question: "If you could escape to one place, where would it be?",
+        options: ["An enchanted forest", "An endless library", "A bustling sports arena", "A world-class art studio"],
+    },
+    {
+        question: "If you could have a magical companion, which would you choose?",
+        options: ["A powerful dragon", "A majestic phoenix", "A mystical unicorn", "A cunning basilisk"],
+    },
+    {
+        question: "Which color speaks to your soul?",
+        options: ["Fiery red", "Deep blue", "Vibrant green", "Sunny yellow"],
+    },
+    {
+        question: "What drives you to push forward in life?",
+        options: ["The thrill of adventure", "The pursuit of knowledge", "Collaboration with others", "The spark of innovation"],
+    },
+    {
+        question: "Which season feels the most like home to you?",
+        options: ["Bright and warm summer", "Crisp and colorful autumn", "Quiet and reflective winter", "Fresh and blossoming spring"],
+    },
+    {
+        question: "What brings you joy in your downtime?",
+        options: ["Exploring new places", "Expanding your mind", "Engaging in physical activities", "Creating something unique"],
+    },
+    {
+        question: "When you face a challenge, what’s your approach?",
+        options: ["Charge at it full force", "Strategize and plan carefully", "Turn to trusted friends", "Think outside the box"],
+    },
 ];
 
+const houseStyles = {
+    Gryffindor: styles.gryffindor,
+    Ravenclaw: styles.ravenclaw,
+    Hufflepuff: styles.hufflepuff,
+    Slytherin: styles.slytherin,
+};
+
+
 const SortingHatQuiz = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [scores, setScores] = useState({ Gryffindor: 0, Hufflepuff: 0, Ravenclaw: 0, Slytherin: 0 });
-  const [showResult, setShowResult] = useState(false);
-  const [house, setHouse] = useState("");
-  const [userId, setUserId] = useState(null); // Assume the userId is fetched from localStorage or elsewhere
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [answers, setAnswers] = useState([]);
+    const [result, setResult] = useState(null);
+    const [resultStyle, setResultStyle] = useState(styles.defaultStyle); // Default style
 
-  const handleAnswerClick = (house) => {
-    setScores(prevScores => ({
-      ...prevScores,
-      [house]: prevScores[house] + 1
-    }));
-    
-    const nextQuestion = currentQuestion + 1;
-    if (nextQuestion < questions.length) {
-      setCurrentQuestion(nextQuestion);
-    } else {
-      // Calculate the sorted house
-      const sortedHouse = Object.keys(scores).reduce((a, b) => (scores[a] > scores[b] ? a : b));
-      
-      // Send the result to the backend to store in the database
-      setTimeout(() => {
-        setHouse(sortedHouse);
-        setShowResult(true);
-        
-        // Send a request to the backend to update the user's house
-        fetch('/api/update-house', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ house: sortedHouse, userId: 'currentUserId' }) // replace 'currentUserId' with the actual user ID
-        })
-        .then(response => response.json())
-        .then(data => {
-          console.log('House successfully updated:', data);
-        })
-        .catch(error => {
-          console.error('Error updating house:', error);
+    const navigate = useNavigate(); // Initialize the useNavigate hook
+
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+            const token = localStorage.getItem('token'); // Get the user token
+            if (!token) {
+                // If there's no token, redirect to login or another page
+                navigate('/login');
+                return;
+            }
+
+            try {
+                const response = await axios.get('http://localhost:5000/api/profile', {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+
+                const { house } = response.data;
+                if (house) {
+                    // If the house field is filled, navigate to the profile page
+                    navigate('/profile');
+                }
+            } catch (error) {
+                console.error("Error fetching user profile:", error);
+                // Optionally handle errors here
+            }
+        };
+
+        fetchUserProfile();
+    }, [navigate]);
+
+    const handleOptionClick = (option) => {
+        setAnswers([...answers, option]);
+        const nextQuestion = currentQuestion + 1;
+        if (nextQuestion < questions.length) {
+            setCurrentQuestion(nextQuestion);
+        } else {
+            calculateResult();
+        }
+    };
+
+    const calculateResult = async () => {
+        const houses = {
+            Gryffindor: 0,
+            Ravenclaw: 0,
+            Hufflepuff: 0,
+            Slytherin: 0,
+        };
+
+        answers.forEach((answer) => {
+            if (["Embarking on an adventure", "Boldness", "Fearless leadership", "An enchanted forest", "A powerful dragon", "Fiery red", "The thrill of adventure", "Bright and warm summer", "Exploring new places", "Charge at it full force"].includes(answer)) {
+                houses.Gryffindor++;
+            } 
+            else if (["Diving into a good book", "Insight", "A wealth of knowledge", "An endless library", "A majestic phoenix", "Deep blue", "The pursuit of knowledge", "Crisp and colorful autumn", "Expanding your mind", "Strategize and plan carefully"].includes(answer)) {
+                houses.Ravenclaw++;
+            } 
+            else if (["Making something with your hands", "Dependability", "Strong relationships", "A world-class art studio", "A mystical unicorn", "Vibrant green", "Collaboration with others", "Fresh and blossoming spring", "Creating something unique", "Turn to trusted friends"].includes(answer)) {
+                houses.Hufflepuff++;
+            } 
+            else if (["Competing in sports", "Originality", "Inspiring creativity", "A cunning basilisk", "Sunny yellow", "The spark of innovation", "Quiet and reflective winter", "Think outside the box", "Finding creative solutions", "Crafting"].includes(answer)) {
+                houses.Slytherin++;
+            }
         });
-      }, 2000); // 2000 milliseconds = 2 seconds
-    }
-  };
-  
 
-  const restartQuiz = () => {
-    setCurrentQuestion(0);
-    setScores({ Gryffindor: 0, Hufflepuff: 0, Ravenclaw: 0, Slytherin: 0 });
-    setShowResult(false);
-    setHouse("");
-  };
+        const sortedHouse = Object.keys(houses).reduce((a, b) => (houses[a] > houses[b] ? a : b));
+        setResult(sortedHouse);
+        setResultStyle(houseStyles[sortedHouse]); // Set style based on the sorted house
 
-  return (
-    
-    <div className={styles.quizContainer}>
-      {showResult ? (
-        <div className={styles.result}>
-          <h2>You belong to {house}!</h2>
-          <button className={styles.restartButton} onClick={restartQuiz}>Restart Quiz</button>
-        </div>
-      ) : (
-        <div className={styles.questionContainer}>
+
+        // Store the house in the database
+        const token = localStorage.getItem('token'); // Get the user token
+        await axios.put('http://localhost:5000/api/profile', { house: sortedHouse }, {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+
+    };
+
+    const profNav = () => {
+        navigate('/profile');
+    };
+
+    return (
+        <div className={styles.quizContainer}>
+        <div class="sparkles">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+        
+
+             <div className={styles.book}>
+            {result ? (
+                <div className={`${styles.resultContainer} ${resultStyle}`}>
+                    <h2 className={styles.resolution}>You are in: {result}!</h2>
+                    <button onClick={profNav}>Check Profile</button>
+                    <h2 id={styles.welcome}>Welcome to Hogwarts!</h2>
+                </div>
+            ) : (
+                <div className={styles.questionContainer}>
+          <div className={styles.pages}>
+          <h1>Discover Your Hogwarts Destiny</h1>
           <h2>{questions[currentQuestion].question}</h2>
+          
           <div className={styles.answerButtons}>
-            {questions[currentQuestion].answers.map((answer) => (
-              <button key={answer.text} onClick={() => handleAnswerClick(answer.house)}>
-                {answer.text}
-              </button>
-            ))}
+            <div className={styles.pages1}>
+            <div className={styles.options}>
+                    {questions[currentQuestion].options.map((option, index) => (
+                        <button key={index} onClick={() => handleOptionClick(option)}>
+                            {option}
+                        </button>
+                    ))}
+                 </div>
+          </div>
           </div>
         </div>
-      )}
-    </div>
-  );
+        </div>
+            )}
+            
+            </div>
+        </div>
+        </div>
+    );
 };
 
 export default SortingHatQuiz;

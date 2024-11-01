@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import styles from './Register.module.css'; // Import the CSS module
-import logo from './Images/CC-Logo.png'; // Ensure the path to your image is correct
+import logo from './Images/Logo-CC.png'; // Ensure the path to your image is correct
+
+const securityQuestions = [
+  "What is your pet's name?",
+  "What was the name of your first school?",
+  "What is your mother's maiden name?"
+];
 
 const Register = () => {
   const [firstName, setFirstName] = useState('');
@@ -13,27 +19,51 @@ const Register = () => {
   const [contact, setContact] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [securityQuestion, setSecurityQuestion] = useState('');
+  const [securityAnswer, setSecurityAnswer] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false); // Loading state
-  const navigate = useNavigate(); // Initialize navigate here
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    setLoading(true); // Start loading
+    setLoading(true);
 
-    // Basic validation
-    if (password !== confirmPassword) {
-      setError("Passwords do not match.");
-      setLoading(false); // Stop loading
+    // Basic validations
+    if (!firstName || !lastName || !email || !address || !contact || !password || !confirmPassword || !securityQuestion || !securityAnswer) {
+      setError("All fields are required.");
+      setLoading(false);
       return;
     }
 
-    // Optional: Email format validation (simple regex)
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      setLoading(false);
+      return;
+    }
+
+    // Password strength validation
+    const passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/; // At least 8 chars, 1 number, 1 special char
+    if (!passwordPattern.test(password)) {
+      setError("Password must be at least 8 characters long and include a number and a special character.");
+      setLoading(false);
+      return;
+    }
+
+    // Email format validation (simple regex)
     const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
     if (!emailPattern.test(email)) {
       setError("Invalid email format.");
-      setLoading(false); // Stop loading
+      setLoading(false);
+      return;
+    }
+
+    // Contact number validation (simple regex for 11 digits)
+    const contactPattern = /^\d{11}$/;
+    if (!contactPattern.test(contact)) {
+      setError("Contact number must be 11 digits.");
+      setLoading(false);
       return;
     }
 
@@ -46,13 +76,15 @@ const Register = () => {
         address,
         contact,
         password,
+        securityQuestion,
+        securityAnswer,
       });
-      navigate('/login'); // Navigate to the login page after successful registration
+      navigate('/login');
     } catch (err) {
-      setError(err.response?.data?.message || 'Registration failed. Please try again.'); // More specific error
-      console.error(err.response?.data); // Log the error for debugging
+      setError(err.response?.data?.message || 'Registration failed. Please try again.');
+      console.error(err.response?.data);
     } finally {
-      setLoading(false); // Stop loading regardless of success or failure
+      setLoading(false);
     }
   };
 
@@ -60,7 +92,7 @@ const Register = () => {
     <div className={styles.registerContainer}>
       <div className={styles.formContainer}>
         <img className={styles.logo} src={logo} alt="Logo" />
-        <h2 className={styles.title}>Register</h2>
+        <h2 className={styles.title}>Create an Account</h2>
         {error && <p className={styles.error}>{error}</p>}
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.inputGroup}>
@@ -166,6 +198,40 @@ const Register = () => {
               aria-label="Confirm Password"
             />
           </div>
+          <div className={styles.inputGroup}>
+            <label className={styles.inputLabel} htmlFor="securityQuestion">Security Question</label>
+            <select
+              id="securityQuestion"
+              value={securityQuestion}
+              onChange={(e) => setSecurityQuestion(e.target.value)}
+              required
+              className={styles.input}
+              aria-label="Security Question"
+            >
+              <option value="">Select a question...</option>
+              {securityQuestions.map((question, index) => (
+                <option key={index} value={question}>{question}</option>
+              ))}
+            </select>
+          </div>
+          
+          {/* Security Answer Input */}
+          <div className={styles.inputGroup}>
+            <label className={styles.inputLabel} htmlFor="securityAnswer">Security Answer</label>
+            <input
+              type="text"
+              id="securityAnswer"
+              placeholder="Enter your answer"
+              value={securityAnswer}
+              onChange={(e) => setSecurityAnswer(e.target.value)}
+              required
+              className={styles.input}
+              aria-label="Security Answer"
+            />
+          </div>
+
+          {/* Other input fields remain unchanged */}
+          
           <button type="submit" className={styles.button} disabled={loading}>
             {loading ? 'Registering...' : 'Register'}
           </button>

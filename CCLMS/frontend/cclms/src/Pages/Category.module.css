@@ -1,0 +1,29 @@
+/* src/components/Category.module.css */
+
+@font-face {
+    font-family: 'sofia';
+    font-style: normal;
+    font-weight: normal;
+    src: url(./CSS/Sofia\ Pro\ Regular\ Az.otf);
+  }
+
+.category {
+    background: #d6cdc4;
+    border: 3px solid #aa9272;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+    color: #38221a;
+    height: 80px;
+    font-family: 'sofia';
+
+}
+
+.category:hover {
+    transform: scale(1.05);
+    background: #bb9d77; /* Darker on hover */
+    color: #d6cdc4;
+    border: 2px solid #6c4c2c;
+}

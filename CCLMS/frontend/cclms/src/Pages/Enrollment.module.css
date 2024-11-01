@@ -1,65 +1,261 @@
-.enrollment {
-    padding: 20px;
-    text-align: center;
-    width: 100%;
-    font-family: 'Garamond', serif; /* Elegant font for a classic feel */
-    height: 200vh;
-  }
-  .header{
-    background-image: url(./Images/enrollement_bg.jpg);
-    height: 70vh;
-    width: 100%;
-    background-repeat: no-repeat; /* Prevents the background from repeating */
-    background-size:cover;  /*Makes sure the background covers the entire area */
-    background-attachment: fixed;
-    position: absolute;
-    left: 0; 
-    top: 0;
-  }
-  .header h1{
-    font-size: 120px;
-    position: relative;
-    top: 80px;
-    color: white;
-  }
-  .header h3{
-    color: white;
-    font-size: 20px;
-    position: relative;
-    top: 10px;
-    line-height: 0%;
-  }
+/* Import a Harry Potter themed font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-  .sec{
-    position: absolute;
-    top: 320px;
+@font-face {
+  font-family: 'Sofia Pro Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url(./CSS/Sofia\ Pro\ Regular\ Az.otf);
+}
+
+body {
+  background-color: #28a745;
+  background-size: cover; /* Cover the entire background */
+  background-position: center;
+  color: #333; /* Default text color */
+
+}
+.container{
+  background-image: url(./Images/bg-main.jpg);
+  min-height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* filter: brightness(30%); */
+}
+.overlay1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+  z-index: 1; /* Place it above the background image */
+}
+
+/* Enrollment container */
+.enrollmentContainer {
+  max-width: 80%; /* Adjusted to fit better on smaller screens */
+  margin:  16vh 15vh 10vh 15vh;
+  padding: 2vh 5vh; /* Adjusted padding */
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+  animation: fadeIn 0.8s ease; /* Animation for the container */
+  position: relative;
+  top: 10px;
+  bottom: 20px;
+  font-family: 'Sofia Pro Regular';
+
+}
+.enrollmentContainer h2{
+  font-family: 'Sofia Pro Regular', Arial, Helvetica, sans-serif;
+color: white;
+font-size: 50px;
+padding-top: -50px;
+}
+
+/* Keyframe for fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enrollment content styles */
+.enrollmentContent {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Subject sections */
+.availableSubjects,
+.enrolledSubjects {
+  margin-bottom: 40px;
+}
+
+/* Table styling */
+.subjectTable {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+.subjectTable th,
+.subjectTable td {
+  padding: 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.subjectTable th {
+  background-color: #0b2034; /* Dark brown for headers */
+  color: #fff; /* White text for contrast */
+  font-weight: bold;
+}
+
+
+/* Button styles */
+.enrollButton,
+.unenrollButton,
+.confirmButton,
+.cancelButton {
+  font-family: 'Sofia Pro Regular';
+  font-size: 20px;
+  padding: 14px 20px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #014380; /* Dark red for buttons */
+  color: white;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* Added box-shadow transition */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for buttons */
+}
+.enrollButton{
+  margin-top: 25px;
+}
+
+.enrollButton:hover,
+.unenrollButton:hover {
+  background-color: #0084ff; /* Darker red on hover */
+  transform: translateY(-3px); /* Lift effect */
+  box-shadow: 0 1px 10px rgba(255, 255, 255, 0.59);
+
+}
+
+
+
+/* Enrollment message styles */
+.enrollmentMessage {
+  color: #28a745; /* Success message color */
+  font-weight: bold;
+  margin: 15px 0;
+  font-size: 1.1em; /* Slightly larger text for emphasis */
+}
+
+/* Enrolled item styling */
+.enrolledItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px; /* Increased padding for enrolled items */
+  border-bottom: 1px solid #e0e0e0; /* Divider between enrolled subjects */
+  transition: background-color 0.3s; /* Animation for hover */
+}
+
+.enrolledItem:hover {
+  background-color: rgba(45, 35, 83, 0.5);/* Light background on hover */
   
-  label {
-    margin-left: 10px;
+}
+
+.enrolledItem:last-child {
+  border-bottom: none; /* Remove border from last item */
+}
+
+/* Overlay styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8); /* Darker overlay for contrast */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+/* Modal styles */
+.modal {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgb(255, 255, 255); /* Improved shadow for modal */
+  z-index: 1001; /* Ensure it is above the overlay */
+  animation: zoomIn 0.4s; /* Zoom-in effect for modal */
+}
+
+/* Keyframe for zoom-in animation */
+@keyframes zoomIn {
+  from {
+    transform: scale(0);
   }
+  to {
+    transform: scale(1);
+  }
+}
+.modal{
+  background-color:#101010;
+   color: white;
+   box-shadow:0px 0 17px #a5b7ff7a ;
+}
+/* Modal title styles */
+.modalTitle {
+  font-size: 1.8em; /* Increased font size for title */
+  margin-bottom: 15px;
+  color: white; /* Darker color for title */
+  text-align: center; /* Center title text */
   
-  .submitButton {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #0066cc;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .submitButton:hover {
-    background-color: #005bb5;
-  }
-  .contents{
-    height: 50vh;
-    width: 100%;
-  }
-  .contents h2{
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Added shadow for better contrast */
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center;
-    justify-content: center;
-  }
+}
+
+/* Modal content styles */
+.modalContent {
+  margin-bottom: 25px;
+  color: #555; /* Subtle color for modal content */
+  line-height: 1.5; /* Improved readability */
+  color: white;
+text-align: center;
+}
+
+/* Modal buttons styles */
+.modalButtons {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+/* Confirm and cancel button styles */
+.confirmButton,
+.cancelButton {
+  padding: 14px 24px; /* Increased padding for better usability */
+  border-radius: 6px;
+  cursor: pointer;
+  border: none; /* Removed border for consistency */
+}
+
+.confirmButton {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.cancelButton {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+.confirmButton:hover {
+  background-color: #125e16; /* Darker green on hover */
+  box-shadow:0px 0 5px #ffffff ;
+}
+
+.cancelButton:hover {
+  background-color: #841817; /* Darker red on hover */
+  box-shadow:0px 0 5px #ffffff ;
+}

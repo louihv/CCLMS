@@ -1,165 +1,180 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
-import styles from './Profile.module.css'; // Assuming you're using CSS modules
+import { useNavigate } from 'react-router-dom';
+import styles from './Profile.module.css';
+
+// House backgrounds and crests
+import gryff from './Images/gryffindor-bg.png';
+import raven from './Images/ravenclaw-bg.png';
+import slyther from './Images/slytherin-bg.png';
+import huffle from './Images/hufflepuff-bg.png';
+import hufflcrest from './Images/hcrest.png';
+import slythercrest from './Images/screst.png';
+import gryffcrest from './Images/gcrest.png';
+import ravencrest from './Images/rcrest.png';
+import fallback from './Images/LogReg_BG.jpg'; // Fallback for background
+import fallbackcrest from './Images/unsorted.png'; // Fallback for crest
 
 const Profile = () => {
     const [profile, setProfile] = useState(null);
     const [error, setError] = useState('');
-    const [isEditing, setIsEditing] = useState(false); // Track if user is in edit mode
-    const [formData, setFormData] = useState({}); // Hold the form data when editing
-    const navigate = useNavigate(); // Initialize the useNavigate hook
+    const [isEditing, setIsEditing] = useState(false);
+    const [formData, setFormData] = useState({});
+    const [hoveredHouse, setHoveredHouse] = useState(false); // State to track hover
+    const navigate = useNavigate();
 
-    // Fetch profile data
+
     useEffect(() => {
         const fetchProfile = async () => {
             try {
                 const token = localStorage.getItem('token');
-                if (!token) {
-                    setError('User not logged in');
-                    return;
-                }
-                const response = await axios.get('http://localhost:5000/api/profile', {
+                if (!token) throw new Error('User not logged in');
+
+                const { data } = await axios.get('http://localhost:5000/api/profile', {
                     headers: { Authorization: `Bearer ${token}` },
                 });
-                setProfile(response.data);
-                setFormData(response.data); // Set the form data with the fetched profile data
+
+                setProfile(data);
+                setFormData(data);
             } catch (err) {
-                setError('Error fetching profile data');
+                setError(err.message || 'Error fetching profile data');
             }
         };
+
         fetchProfile();
     }, []);
 
-    // Handle input changes in edit mode
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
+    useEffect(() => {
+        const profileContainer = document.querySelector(`.${styles.profileContainer}`);
+        if (profileContainer) profileContainer.style.opacity = 1;
+    }, []);
+
+    const houseBackgrounds = {
+        gryffindor: gryff,
+        hufflepuff: huffle,
+        ravenclaw: raven,
+        slytherin: slyther,
     };
 
-    // Handle form submission to save changes
+    const houseCrests = {
+        gryffindor: gryffcrest,
+        hufflepuff: hufflcrest,
+        ravenclaw: ravencrest,
+        slytherin: slythercrest,
+    };
+
+    const houseKey = profile?.house?.toLowerCase() || null;
+
+    const handleChange = (e) => {
+        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    };
+
     const handleSave = async () => {
         try {
             const token = localStorage.getItem('token');
             await axios.put('http://localhost:5000/api/profile', formData, {
                 headers: { Authorization: `Bearer ${token}` },
             });
-            setProfile(formData); // Update the profile state with the new data
-            setIsEditing(false); // Exit edit mode after saving
+            setProfile(formData);
+            setIsEditing(false);
         } catch (err) {
             setError('Error saving profile data');
         }
     };
 
-    // Function to navigate to the existing page
     const handleHouseButtonClick = () => {
-        navigate('/sortinghat'); // Replace with the actual path to your existing page
+        navigate('/sortinghat');
     };
 
-    if (error) {
-        return <div className={styles.error}>{error}</div>;
-    }
-
-    if (!profile) {
-        return <div className={styles.loading}>Loading...</div>; // Loading state
-    }
-
-    // Determine house class based on profile house
-    const houseClass = profile.house ? styles[profile.house.toLowerCase()] : '';
+    if (error) return <div className={styles.error}>{error}</div>;
+    if (!profile) return <div className={styles.loading}>Loading...</div>;
 
     return (
-        <div className={`${styles.profileContainer} ${houseClass}`}>
-            <h2>User Profile</h2>
+        <div
+            className={styles.profileBody}
+            style={{
+                backgroundImage: houseKey ? `url(${houseBackgrounds[houseKey]})` : `url(${fallback})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                minHeight: '100vh',
+                width: '100%',
+            }}
+        >
+            <img
+                alt="Profile Crest"
+                className={styles.profileImage}
+                src={houseCrests[houseKey] || fallbackcrest}
+                onMouseEnter={() => setHoveredHouse(true)} // Start hover
+                onMouseLeave={() => setHoveredHouse(false)} // End hover
+            />
 
-            {isEditing ? (
-                // Editable form when in edit mode
-                <div>
-                    <p>
-                        <strong>First Name:</strong>
-                        <input
-                            type="text"
-                            name="firstName"
-                            value={formData.firstName}
-                            onChange={handleChange}
-                            className={styles.inputField}
-                        />
-                    </p>
-                    <p>
-                        <strong>Middle Name:</strong>
-                        <input
-                            type="text"
-                            name="middleName"
-                            value={formData.middleName}
-                            onChange={handleChange}
-                            className={styles.inputField}
-                        />
-                    </p>
-                    <p>
-                        <strong>Last Name:</strong>
-                        <input
-                            type="text"
-                            name="lastName"
-                            value={formData.lastName}
-                            onChange={handleChange}
-                            className={styles.inputField}
-                        />
-                    </p>
-                    <p>
-                        <strong>Email:</strong>
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            className={styles.inputField}
-                        />
-                    </p>
-                    <p>
-                        <strong>Address:</strong>
-                        <input
-                            type="text"
-                            name="address"
-                            value={formData.address}
-                            onChange={handleChange}
-                            className={styles.inputField}
-                        />
-                    </p>
-                    <p>
-                        <strong>Contact:</strong>
-                        <input
-                            type="text"
-                            name="contact"
-                            value={formData.contact}
-                            onChange={handleChange}
-                            className={styles.inputField}
-                        />
-                    </p>
-                    
-                    <button className={styles.saveButton} onClick={handleSave}>Save</button>
-                    <button className={styles.cancelButton} onClick={() => setIsEditing(false)}>Cancel</button>
-                </div>
-            ) : (
-                // Display profile when not in edit mode
-                <div>
-                    <p><strong>First Name:</strong> {profile.firstName}</p>
-                    <p><strong>Middle Name:</strong> {profile.middleName}</p>
-                    <p><strong>Last Name:</strong> {profile.lastName}</p>
-                    <p><strong>Email:</strong> {profile.email}</p>
-                    <p><strong>Address:</strong> {profile.address}</p>
-                    <p><strong>Contact:</strong> {profile.contact}</p>
-                    <p>
-                        <strong>House:</strong> {profile.house}
-                        {!profile.house && (
-                            <button className={styles.navigateButton} onClick={handleHouseButtonClick}>
-                                Get Sorted Now!
-                            </button>
-                        )}
-                    </p>
-                    <button className={styles.editButton} onClick={() => setIsEditing(true)}>Edit Profile</button>
-                </div>
+            {/* Conditional rendering of house description on hover */}
+            {houseKey === 'gryffindor' && (
+            <div className={`${styles.houseDescription} ${styles.gryffindorDesc}`}>
+                Gryffindor: Where dwell the brave at heart. Bold deeds, daring spirits, and unwavering courage define this noble house.
+            </div>
             )}
+            {houseKey === 'hufflepuff' && (
+            <div className={`${styles.houseDescription} ${styles.hufflepuffDesc}`}>
+                Hufflepuff: Known for loyalty, patience, and fair play. Here, kindness and hard work are valued above all.
+            </div>
+            )}
+            {houseKey === 'ravenclaw' && (
+            <div className={`${styles.houseDescription} ${styles.ravenclawDesc}`}>
+                Ravenclaw: The house of intellect and wit. Those who seek knowledge, creativity, and wisdom will always find a home here.
+            </div>
+            )}
+            {houseKey === 'slytherin' && (
+            <div className={`${styles.houseDescription} ${styles.slytherinDesc}`}>
+                Slytherin: Ambition flows through every Slytherin. The cunning, resourceful, and determined rise to greatness within these walls.
+            </div>
+            )}
+
+            <div className={`${styles.profileContainer} ${isEditing ? styles.editMode : ''}`}>
+                <h2>Wizard Profile</h2>
+
+                {isEditing ? (
+                    <form>
+                        {['firstName', 'middleName', 'lastName', 'email', 'address', 'contact'].map((field) => (
+                            <p key={field}>
+                                <strong>{`${field.charAt(0).toUpperCase() + field.slice(1)}:`}</strong>
+                                <input
+                                    type={field === 'email' ? 'email' : 'text'}
+                                    name={field}
+                                    value={formData[field] || ''}
+                                    onChange={handleChange}
+                                    className={styles.inputField}
+                                    aria-label={field}
+                                />
+                            </p>
+                        ))}
+                        <button type="button" className={styles.saveButton} onClick={handleSave}>
+                            Save
+                        </button>
+                        <button type="button" className={styles.cancelButton} onClick={() => setIsEditing(false)}>
+                            Cancel
+                        </button>
+                    </form>
+                ) : (
+                    <div className={styles.userContainer}>
+                        <p><strong>Full Name:</strong> {`${profile.firstName} ${profile.middleName} ${profile.lastName}`}</p>
+                        <p><strong>Email:</strong> {profile.email}</p>
+                        <p><strong>Address:</strong> {profile.address}</p>
+                        <p><strong>Contact:</strong> {profile.contact}</p>
+                        <p>
+                            <strong>House:</strong> {profile.house}
+                            {!profile.house && (
+                                <button className={styles.navigateButton} onClick={handleHouseButtonClick}>
+                                    Get Sorted Now!
+                                </button>
+                            )}
+                        </p>
+                        <button className={styles.editButton} onClick={() => setIsEditing(true)}>
+                            Edit Profile
+                        </button>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };

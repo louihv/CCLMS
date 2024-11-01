@@ -1,0 +1,164 @@
+/* Potion.module.css */
+
+.mainContainer1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(./Images/bg-main.jpg);
+    background-color: rgba(0, 0, 0, 0.315);
+    background-size: cover;
+    background-position: center;  
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #f5f5f5;
+    font-family: 'Garamond', serif;
+  }
+  
+  .mainContainer {
+    background-color: rgba(34, 34, 51, 0.8);
+    padding: 20px 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-top: 20vh;
+    margin-bottom: 10vh;
+  
+  
+  }
+  
+  .mainContainer h1 {
+    font-size: 2rem;
+    color: #e4c5f9;
+    margin-bottom: 10px;
+  }
+  
+  .mainContainer p {
+    font-size: 1rem;
+    color: #d3d3f7;
+    margin-bottom: 20px;
+  }
+  
+  .tipBox {
+    background-color: #3c3c5e;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    color: #ffc107;
+    font-style: italic;
+  }
+  
+  .progress {
+    background-color: #444466;
+    border-radius: 20px;
+    height: 8px;
+    overflow: hidden;
+    margin: 15px 0 25px;
+  
+  }
+  
+  .progressBar {
+    background: linear-gradient(to right, #8f5bd5, #a760ff);
+    height: 100%;
+    animation: progress 3s ease-in-out infinite;
+  }
+  
+  
+  .mainContainer h2 {
+    color: #e4c5f9;
+    margin-bottom: 10px;
+    font-family: 'Sofia Pro Regular', sans-serif;
+  }
+  
+  .ingredients {
+    text-transform: capitalize;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .ingredientLabel {
+    background: rgb(73,42,96);
+  background: linear-gradient(270deg, rgba(73,42,96,1) 28%, rgba(50,36,60,1) 72%, rgba(50,36,60,1) 80%);
+    color: #f5f5f5;
+    padding: 8px 12px;
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .ingredientLabel:hover {
+    transform: scale(1.05);
+    background-color: #3a3a69;
+  }
+  
+  input[type="checkbox"] {
+    display: none;
+  }
+  
+  .tooltip {
+    visibility: hidden;
+    background-color: #d1c4f9;
+    color: #333;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    font-size: 0.8rem;
+    width: 150px;
+  }
+  
+  .ingredientLabel:hover .tooltip {
+    visibility: visible;
+  }
+  
+  .brewButton, .clearButton {
+    /* background-color: #8f5bd5; */
+    /* background: rgb(255,215,0);
+    background: radial-gradient(circle, rgba(255,215,0,1) 0%, rgba(142,116,33,1) 0%, rgba(95,75,47,1) 0%, rgba(50,36,60,1) 74%); */
+    background: url(https://i.pinimg.com/236x/06/87/3b/06873ba1e334d52674e699f0d97bb39c.jpg) center/cover no-repeat;
+  
+    color: #e4c5f9;
+    padding: 10px 20px;
+    border: 		#32243c 2px solid  ;
+    border-radius: 18px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 20px;
+    font-family: 'Sofia Pro Regular', sans-serif;
+    box-shadow: 5px 5px 15px 7px rgba(34, 27, 39, 0.67), 5px 5px 15px 7px rgba(124, 68, 166, 0.67);
+  }
+  
+  .brewButton:hover, .clearButton:hover {
+    background-color: #a760ff;
+  }
+  
+  .disabled {
+    background-color: #444466;
+    cursor: not-allowed;
+  }
+  
+  .result {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #ffd700;
+  }
+  
+  .potionImage {
+    display: block;
+    margin: 15px auto;
+    max-width: 120px;
+    border: 3px solid #8f5bd5;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
