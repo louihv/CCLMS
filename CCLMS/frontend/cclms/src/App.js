@@ -6,8 +6,6 @@ import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Dashboard from './Pages/Dashboard';
-import Herald from './Pages/NewsPage';
-import CourseDetail from './Pages/CourseDetail';
 import PrivateRoute from './Components/PrivateRoute'; // Import PrivateRoute
 import { Navigate } from 'react-router-dom';
 import ArticleDetail from './Components/ArticleDetail';
@@ -15,8 +13,15 @@ import ArticleList from './Components/ArticleList';
 import Archive from './Pages/Archives';
 import SortingHat from './Pages/SortingHatQuiz';
 import Enrollment from './Pages/Enrollment';
+import Potion from'./Pages/Potion';
 import Profile from './Pages/Profile';
-import SortingHatQuestions from './Pages/SortingHatQuestions';
+import MainArticle from './Pages/MainArticle';
+import AboutUs from './Components/AboutUs';
+import Library from './Pages/Library';
+import Fortune from './Pages/Fortune';
+
+
+
 
 
 function App() {
@@ -32,12 +37,18 @@ function App() {
             <Route path="/archive" element={<Archive/>} />
             <Route path="/sortinghat" element={<SortingHat/>} />
             <Route path="/enrollment" element={<Enrollment/>} />
+            <Route path="/potion" element={<Potion/>} />
+            <Route path="/aboutcharmcasters" element={<AboutUs/>} />
             <Route path="/profile" element={<Profile/>} />
+            <Route path="/main" element={<MainArticle/>} />
             <Route path="/hogwartsherald" element={<ArticleList />} />
-            <Route path="/articles/:id" element={<ArticleDetail />} /> {/* Corrected route for article detail */}
+            <Route path="/articles/:id" element={<ArticleDetail />} /> 
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/sorting" element={<SortingHatQuestions />} />
+            <Route path="/library" element={<Library />} />
+            <Route path="/fortune" element={<Fortune />} />
+
+
           </Routes>
         </main>
         <ConditionalFooter /> {/* Conditionally render the footer */}
